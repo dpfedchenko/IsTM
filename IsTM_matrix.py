@@ -3,8 +3,8 @@ import numpy as np
 def iPr (k, ng, dzg, E):
     I = complex(0, 1)
     Pi = np.pi
-    return (np.diag([np.exp(-(2*I*Pi) * k * ng * dzg),
-                     np.exp( (2*I*Pi) * k * ng * dzg)]) @\
+    return (np.diag([np.exp(-(2 * I * Pi) * k * ng * dzg),
+                     np.exp( (2 * I * Pi) * k * ng * dzg)]) @\
                      np.array(E)).tolist()
         
 def Pr (k, ng, dzg, E):

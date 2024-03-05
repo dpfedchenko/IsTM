@@ -3,3 +3,5 @@ for i in range(0, len(omega_x)):
     omega_x[i] = omega_x[i]/500
 U = [0]*len(omega_x)
 
+for i in range(0, len(omega_x)):
+    omega = omega_x[i]

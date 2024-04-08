@@ -5,15 +5,17 @@ def list_of_BM(Structure, StructureProperties):
     List_of_BM = []
 
     for i in range(0, len(Structure)-1):
-        tmp_BM = Calc.bm_calc(StructureProperties[Structure[i]][0], 
-                              StructureProperties[Structure[i]][1],
-                              StructureProperties[Structure[i]][2], 
-                              StructureProperties[Structure[i]][3],
-                              StructureProperties[Structure[i+1]][0], 
-                              StructureProperties[Structure[i+1]][1],
-                              StructureProperties[Structure[i+1]][2], 
-                              StructureProperties[Structure[i+1]][3])
-        List_of_BM.append(tmp_BM)
+      tmp_BM = Calc.bm_calc(
+        StructureProperties[Structure[i]][0], 
+        StructureProperties[Structure[i]][1],
+        StructureProperties[Structure[i]][2], 
+        StructureProperties[Structure[i]][3],
+        StructureProperties[Structure[i+1]][0], 
+        StructureProperties[Structure[i+1]][1],
+        StructureProperties[Structure[i+1]][2], 
+        StructureProperties[Structure[i+1]][3]
+    )
+      List_of_BM.append(tmp_BM)
     
     return List_of_BM
 

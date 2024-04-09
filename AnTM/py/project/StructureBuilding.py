@@ -19,21 +19,26 @@ def list_of_BM(Structure, StructureProperties):
     
     return List_of_BM
 
-def list_of_finite_SM(LCM, Structure, StructureProperties):
+def list_of_finite_SM(LCM, LDM, Structure, StructureProperties):
     List_of_StoM_transform = []
     List_of_finite_SM = []
-    VM = [[1, 0, 0, 0],
-          [0, 1, 0, 0], 
-          [0, 0, 1, 0],
-          [0, 0, 0, 1]]
+    VM = [
+        [1, 0, 0, 0],
+        [0, 1, 0, 0], 
+        [0, 0, 1, 0],
+        [0, 0, 0, 1]
+    ]
     
-    matrix_arr = [VM, LCM]
-    matrix_dict = {"V": 0,
-                   "LC": 1}
+    matrix_arr = [VM, LCM, LDM]
+    matrix_dict = {
+        "V": 0,
+        "LC": 1,
+        "LD": 2
+    }
 
-    for i in range(0, len(Structure)-1):
+    for i in range(0, len(Structure)):
         idx = matrix_dict.get(Structure[i])
-        List_of_StoM_transform.append(matrix_arr[i])
+        List_of_StoM_transform.append(matrix_arr[idx])
     
     for i in range(0, len(list_of_BM(Structure, StructureProperties))):
         List_of_finite_SM += [List_of_StoM_transform[i], list_of_BM(Structure, StructureProperties)[i]]

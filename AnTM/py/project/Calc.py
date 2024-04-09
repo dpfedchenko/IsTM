@@ -1,5 +1,5 @@
 import numpy as np
-import LiquidCrystal, Boundary, Vacuum, EMwave
+import LiquidCrystal, Boundary, Vacuum, EMwave, LinearDefect
 
 #Constants for calculations
 I = complex(0, 1)
@@ -74,6 +74,21 @@ def lcm_calc(omega, No, Ne, Lo, L, X_M, xi):
   LCM[3][3] = 1/2*((2*I*X_M*Ne**3+8*I*No*Ne**2-I*(-2*No**2+B)*X_M*Ne-2*I*No*B)*DifS-2*No**2*DifC+2*Ne**2*DifC+A*SumC+2*I*No*A*SumS)/A
   
   return LCM
+
+def ldm_calc(omega, Nd, Ld):
+  LDM = [
+  [0, 0, 0, 0],
+  [0, 0, 0, 0], 
+  [0, 0, 0, 0],
+  [0, 0, 0, 0]
+  ]
+
+  LDM[0][0] = np.exp(-I * Nd * omega * Ld)
+  LDM[1][1] = np.exp(I * Nd * omega * Ld)
+  LDM[2][2] = np.exp(-I * Nd * omega * Ld)
+  LDM[3][3] = np.exp(I * Nd * omega * Ld)
+  
+  return LDM 
 
 def bm_calc(epsilon_o_L, mu_o_L, epsilon_e_L, mu_e_L, epsilon_o_R, epsilon_e_R, mu_o_R, mu_e_R):
   #BM = Boundary.Matrix

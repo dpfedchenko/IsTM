@@ -17,14 +17,20 @@ def create_TC(omega_x):
 def vo_calc(Theta, Phi):
   Theta_rad = Theta * (Pi / 180)
   Phi_rad = Phi * (Pi / 180)
-  
+  '''
   Vo = [
     np.cos(Theta_rad),
     0,
     np.sin(Theta_rad) * np.exp(I * Phi_rad),
     0
   ]
-  
+  '''
+  Vo = [
+    1/np.sqrt(2),
+    0,
+   I * (1/np.sqrt(2)),
+    0
+  ]
   return Vo
   
 def lcm_calc(omega, No, Ne, Lo, L, X_M, xi): 
@@ -90,7 +96,7 @@ def ldm_calc(omega, Nd, Ld):
   
   return LDM 
 
-def bm_calc(epsilon_o_L, mu_o_L, epsilon_e_L, mu_e_L, epsilon_o_R, epsilon_e_R, mu_o_R, mu_e_R):
+def bm_calc(epsilon_o_L, mu_o_L, epsilon_e_L, mu_e_L, epsilon_o_R, mu_o_R, epsilon_e_R, mu_e_R):
   #BM = Boundary.Matrix
   
   BM = [
@@ -121,16 +127,21 @@ def bm_calc(epsilon_o_L, mu_o_L, epsilon_e_L, mu_e_L, epsilon_o_R, epsilon_e_R, 
 
 def fm_calc(List_of_finite_SM):
   FM = List_of_finite_SM[0]
-  
   for i in range(1, len(List_of_finite_SM)):
       FM = np.dot(FM, List_of_finite_SM[i])
       
   return FM
 
 def transmission_coef(FM, Vo):
-  Tx = (-Vo[2] * FM[0][2] + FM[2][2] * Vo[0]) / (FM[0][0] * FM[2][2] - FM[0][2] * FM[2][0])
-  Ty = -(Vo[0] * FM[2][0] - FM[0][0] * Vo[2]) / (FM[0][0] * FM[2][2] - FM[0][2] * FM[2][0])
+  #Tx = (-Vo[2] * FM[0][2] + FM[2][2] * Vo[0]) / (FM[0][0] * FM[2][2] - FM[0][2] * FM[2][0])
+  #Ty = -(Vo[0] * FM[2][0] - FM[0][0] * Vo[2]) / (FM[0][0] * FM[2][2] - FM[0][2] * FM[2][0])
 
+  Tx = (FM[2][2] * Vo[0] - FM[0][2] * Vo[2]) / (- FM[2][0] * FM[0][2] + FM[2][2] * FM[0][0])
+  Ty = - (-FM[0][0] * Vo[2] + FM[2][0] * Vo[0]) / (-FM[2][0] * FM[0][2] + FM[2][2] * FM[0][0])
+
+  ###
+  #print("Tx:", Tx)
+  #print("Ty:", Ty)
   Tc = abs(Tx)** 2 + abs(Ty)** 2
 
   return Tc

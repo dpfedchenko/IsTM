@@ -20,7 +20,7 @@ TC = Calc.create_TC(omega_x)
 List_of_BM = StructureBuilding.list_of_BM(Structure, StructureProperties)
 
 
-omega = 6.0
+omega = 4.0
 List_of_finite_SM = StructureBuilding.list_of_finite_SM(
   Calc.lcm_calc(omega, LiquidCrystal.No, LiquidCrystal.Ne, LiquidCrystal.Lo, LiquidCrystal.L, LiquidCrystal.X_M, LiquidCrystal.xi), 
   Calc.ldm_calc(omega, LinearDefect.No, LinearDefect.L),
@@ -39,21 +39,24 @@ for i in range(0, len(List_of_finite_SM)):
 
 
 FM = Calc.fm_calc(List_of_finite_SM)
-
 print("FM")
-print(FM)
+#print(*FM)
+for i in range(0, 4):
+  for j in range(0, 4):
+    print("FM[",i,"][",j,"] = ", FM[i][j])
+    
 
 Vo = Calc.vo_calc(EMwave.Theta, EMwave.Phi)
-
 print("Vo")
 print(Vo)
 
-Tc = Calc.transmission_coef(FM, Vo)
 
+Tc = Calc.transmission_coef(FM, Vo)
 print("Tc")
 print(Tc)
-
 #plot.plot_transmission_spectra(omega_x, TC)
+
+
 
 
 

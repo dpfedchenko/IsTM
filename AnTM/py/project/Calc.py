@@ -1,5 +1,5 @@
 import numpy as np
-import LiquidCrystal, Boundary, Vacuum, EMwave, LinearDefect
+import LiquidCrystal, Boundary, Vacuum, EMwave, LinearDefect, TwistDefect
 
 #Constants for calculations
 I = complex(0, 1)
@@ -28,11 +28,35 @@ def vo_calc(Theta, Phi):
   Vo = [
     1/np.sqrt(2),
     0,
-   I * (1/np.sqrt(2)),
+    I * (1/np.sqrt(2)),
     0
   ]
   return Vo
+
+def tdm_calc(D_D):
+  TDM = [
+  [0, 0, 0, 0],
+  [0, 0, 0, 0], 
+  [0, 0, 0, 0],
+  [0, 0, 0, 0]
+  ]
   
+  t1 = np.cos(D_D * (Pi / 180))
+  t2 = np.sin(D_D * (Pi / 180))
+
+  TDM[0][0] = t1 + I * t1
+  TDM[0][1] = t1 + I * t1
+  TDM[0][2] = t1 + I * t1
+  TDM[0][3] = t1 + I * t1
+  
+  TDM[0][2] = -t2 - I * t2
+  TDM[1][3] = -t2 - I * t2 
+  TDM[2][0] = t2 - I * t2
+  TDM[3][1] = t2 + I * t2
+
+  return TDM
+  
+
 def lcm_calc(omega, No, Ne, Lo, L, X_M, xi): 
     
   A = (2 * np.sqrt(omega**2 * Lo**2 * No**4 + 16 * No**2 * Pi**2 - 2 * No**2 * Lo**2 * Ne**2 * omega**2 + 16 * Pi**2 * Ne * No * X_M + omega**2 * Lo**2 * Ne**4 + 16 * Ne**2 * Pi**2)) / (omega * np.abs(Lo))

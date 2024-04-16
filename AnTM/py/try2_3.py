@@ -852,7 +852,7 @@ class Ui_MainWindow(object):
 
             ######### Resulting matrix  #########
 
-            Tw = np.dot(np.dot(LBM, LCM), RBM)
+            Tw = np.dot(np.dot(np.dot(np.dot(LBM, LCM), LDM), LCM), RBM)
 
             Rx = (-Tw[1][0] * Vo[2] * Tw[0][2] + Tw[1][0] * Tw[2][2] * Vo[0] - Tw[1][2] * Vo[0] * Tw[2][0] + Tw[1][2] *
                   Tw[0][0] * Vo[2]) / (Tw[0][0] * Tw[2][2] - Tw[0][2] * Tw[2][0])

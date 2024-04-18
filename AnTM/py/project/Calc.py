@@ -6,7 +6,7 @@ I = complex(0, 1)
 Pi = np.pi
 
 def create_omega_x(omega_min, omega_max):
-  omega_x = np.linspace(omega_min, omega_max, 1000)
+  omega_x = np.linspace(omega_min, omega_max, 2000)
   return omega_x
 
 def create_TC(omega_x):

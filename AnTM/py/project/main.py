@@ -1,7 +1,7 @@
 import numpy as np
 import Calc, LiquidCrystal, Boundary, Vacuum, StructureBuilding, EMwave, LinearDefect, TwistDefect, plot
 
-Structure = ["V","LC", "TD","LC", "V"]
+Structure = ["V","LC", "LD", "LC", "V"]
 StructureProperties = {
   "V": [Vacuum.epsilon_o, Vacuum.mu_o, Vacuum.epsilon_e, Vacuum.mu_e],
   "LC": [LiquidCrystal.epsilon_o, LiquidCrystal.mu_o, LiquidCrystal.epsilon_e, LiquidCrystal.mu_e],

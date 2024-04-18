@@ -1,9 +1,9 @@
 import numpy as np
 
-epsilon_o = 1.1
-mu_o = 1/1.1
-epsilon_e = 1/1.1
-mu_e = 1.1
+epsilon_o = 2.25
+mu_o = 1
+epsilon_e = 2.89
+mu_e = 1
 
 No = np.sqrt(epsilon_o * mu_o)
 Ne = np.sqrt(epsilon_e * mu_e)

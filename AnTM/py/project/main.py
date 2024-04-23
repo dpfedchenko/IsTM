@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 import Calc, LiquidCrystal, Boundary, Vacuum, StructureBuilding, EMwave, LinearDefect, TwistDefect, plot, LiquidCrystal2
 
 Structure = ["V","LC", "TD", "LC2", "V"]  
@@ -18,28 +19,33 @@ StructureMatrixes = {
   "LC2": Calc.lcm_calc2
   }
 
+ax = plt.figure().add_subplot(projection='3d')
 omega_x = Calc.create_omega_x(0.1, 8)
 TC = Calc.create_TC(omega_x)
 
+Lo_values = [0.1, 0.2, 0.3]
+
 List_of_BM = StructureBuilding.list_of_BM(Structure, StructureProperties)
-
-for i in range(0, len(omega_x)):
-  omega = omega_x[i]
-  List_of_finite_SM = StructureBuilding.list_of_finite_SM(
-    Calc.lcm_calc(omega, LiquidCrystal.No, LiquidCrystal.Ne, LiquidCrystal.Lo, LiquidCrystal.L, LiquidCrystal.X_M, LiquidCrystal.xi),
-    Calc.ldm_calc(omega, LinearDefect.No, LinearDefect.L),
-    Calc.tdm_calc(TwistDefect.D_D),
-    Calc.lcm_calc2(omega, LiquidCrystal2.No, LiquidCrystal2.Ne, LiquidCrystal2.Lo, LiquidCrystal2.L, LiquidCrystal2.X_M, LiquidCrystal2.xi), 
-    Structure, 
-    StructureProperties
-    )
-  FM = Calc.fm_calc(List_of_finite_SM)
-  Vo = Calc.vo_calc(EMwave.Theta, EMwave.Phi)
-  Tc = Calc.transmission_coef(FM, Vo)
-  TC[i] = Tc
-
-plot.plot_transmission_spectra(omega_x, TC)
-
+for j in Lo_values:
+  for i in range(0, len(omega_x)):
+    omega = omega_x[i]
+    List_of_finite_SM = StructureBuilding.list_of_finite_SM(
+      Calc.lcm_calc(omega, LiquidCrystal.No, LiquidCrystal.Ne, LiquidCrystal.Lo, LiquidCrystal.L, LiquidCrystal.X_M, LiquidCrystal.xi),
+      Calc.ldm_calc(omega, LinearDefect.No, LinearDefect.L),
+      Calc.tdm_calc(TwistDefect.D_D),
+      Calc.lcm_calc2(omega, LiquidCrystal2.No, LiquidCrystal2.Ne, j, LiquidCrystal2.L, LiquidCrystal2.X_M, LiquidCrystal2.xi), 
+      Structure, 
+      StructureProperties
+      )
+    FM = Calc.fm_calc(List_of_finite_SM)
+    Vo = Calc.vo_calc(EMwave.Theta, EMwave.Phi)
+    Tc = Calc.transmission_coef(FM, Vo)
+    TC[i] = Tc
+  
+  ax.plot(omega_x, [j] * len(omega_x), TC)  
+    
+#plot.plot_transmission_spectra(omega_x, TC)
+plt.show()
 
 
 

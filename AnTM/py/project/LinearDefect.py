@@ -6,4 +6,4 @@ epsilon_o = No**2 / mu_o
 epsilon_e = epsilon_o   
 mu_e = 1
 
-L = 0.25
+L = 0.25 

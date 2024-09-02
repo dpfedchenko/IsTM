@@ -4,7 +4,10 @@ import numpy as np
 I = complex(0, 1)
 Pi = np.pi
 
-def R1m_matrix(phi):
+def R1m_matrix(L, pitch):
+    
+    N_pitch = L / pitch
+    phi = 2 * np.pi * N_pitch
     
     R1m = np.zeros((4, 4))
     
@@ -30,7 +33,11 @@ def R1m_matrix(phi):
     
     return R1m
 
-def R2i_matrix(phi2):
+def R2i_matrix(L, pitch):
+    
+    N_pitch = L / pitch
+    phi_R = 2 * np.pi * N_pitch
+    phi2 = phi_R
     
     R2i = np.zeros((4, 4))
     

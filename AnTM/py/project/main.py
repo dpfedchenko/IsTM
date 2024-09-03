@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import Calc, LiquidCrystal, Boundary, Vacuum, StructureBuilding, EMwave, LinearDefect, TwistDefect, plot, LiquidCrystal2
 
-Structure = ["V", "LC", "TD","LC2", "V"]  
+Structure = ["V", "LC", "LD","LC2", "V"]  
 StructureProperties = {
   "V": [Vacuum.epsilon_o, Vacuum.mu_o, Vacuum.epsilon_e, Vacuum.mu_e],
   "LC": [LiquidCrystal.epsilon_o, LiquidCrystal.mu_o, LiquidCrystal.epsilon_e, LiquidCrystal.mu_e],
@@ -20,7 +20,7 @@ StructureMatrixes = {
   }
 
 #ax = plt.figure().add_subplot(projection='3d')
-omega_x = Calc.create_omega_x(0.1, 10)
+omega_x = Calc.create_omega_x(5, 15)
 TC = Calc.create_TC(omega_x)
 
 '''
@@ -45,6 +45,7 @@ for j in Lo_values:
   
   ax.plot(omega_x, [j] * len(omega_x), TC)  
 '''    
+
 for i in range(0, len(omega_x)):
     omega = omega_x[i]
     List_of_finite_SM = StructureBuilding.list_of_finite_SM(
@@ -65,7 +66,8 @@ with open('lc_ld_lc108.txt', 'w') as file:
 
   for i in range(len(omega_x)):
     file.write(f"{omega_x[i]}    {TC[i]}\n")
-    
+
+plot.plot_transmission_spectra_OxWaveLength(omega_x, TC)    
 plot.plot_transmission_spectra(omega_x, TC)
 #plt.show()
 

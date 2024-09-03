@@ -1,15 +1,24 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-ax = plt.figure().add_subplot(projection='3d')
+# Создаем данные для графиков
+x = np.linspace(0, 10, 100)
+y1 = np.sin(x)
+y2 = np.cos(x)
 
-Los = [1, 2, 3]
+# Создаем первое окно с графиком синуса
+plt.figure(1)  # Создаем первое окно
+plt.plot(x, y1, color='blue')
+plt.title('График синуса')
+plt.xlabel('x')
+plt.ylabel('sin(x)')
 
-for Lo_value in Los:
-    omega_x = np.linspace(-10, 10, 1000)
-    Y = [Lo_value]*len(omega_x)
-    TC = np.sin(omega_x)
-    
-    ax.scatter(omega_x, Y, TC)
+# Создаем второе окно с графиком косинуса
+plt.figure(2)  # Создаем второе окно
+plt.plot(x, y2, color='red')
+plt.title('График косинуса')
+plt.xlabel('x')
+plt.ylabel('cos(x)')
 
+# Показываем оба графика
 plt.show()

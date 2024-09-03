@@ -1,6 +1,6 @@
-D_D = 45
+D_D = 90
 
-No = 1.0
+No = 1
 
 mu_o = 1
 epsilon_o = No**2 / mu_o

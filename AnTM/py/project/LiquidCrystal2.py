@@ -1,8 +1,8 @@
 import numpy as np
 
-epsilon_o = 2.0164
+epsilon_o = 2.56
 mu_o = 1
-epsilon_e = 2.4649
+epsilon_e = 3.24
 mu_e = 1
 
 No = np.sqrt(epsilon_o * mu_o)
@@ -13,8 +13,8 @@ _xi = 1 / xi
 
 X_M = xi + _xi
 
-Lo = 0.4533
-L = 3
+Lo = 1
+L = 5
 
 Matrix = [
   [0, 0, 0, 0],

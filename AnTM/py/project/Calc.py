@@ -223,3 +223,14 @@ def transmission_coef(FM, Vo):
   Tc = abs(Tx)** 2 + abs(Ty)** 2
 
   return Tc
+'''
+def derivative(x, y):
+  dy = np.diff(y)
+  dx = np.diff(x)
+  dy_dx = dy / dx
+  
+  x_derivative = x[:-1]
+  normalize_dy_dx = dy_dx / (max(dy_dx) - min(dy_dx))
+  
+  return x_derivative, normalize_dy_dx
+'''

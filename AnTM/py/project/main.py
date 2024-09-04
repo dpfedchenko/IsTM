@@ -2,7 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import Calc, LiquidCrystal, Boundary, Vacuum, StructureBuilding, EMwave, LinearDefect, TwistDefect, plot, LiquidCrystal2
 
-Structure = ["V", "LC", "LD","LC2", "V"]  
+Structure = ["V", "LC", "LD","LC", "V"]  
+
 StructureProperties = {
   "V": [Vacuum.epsilon_o, Vacuum.mu_o, Vacuum.epsilon_e, Vacuum.mu_e],
   "LC": [LiquidCrystal.epsilon_o, LiquidCrystal.mu_o, LiquidCrystal.epsilon_e, LiquidCrystal.mu_e],
@@ -20,7 +21,7 @@ StructureMatrixes = {
   }
 
 #ax = plt.figure().add_subplot(projection='3d')
-omega_x = Calc.create_omega_x(5, 15)
+omega_x = Calc.create_omega_x(2, 6)
 TC = Calc.create_TC(omega_x)
 
 '''
@@ -67,9 +68,32 @@ with open('lc_ld_lc108.txt', 'w') as file:
   for i in range(len(omega_x)):
     file.write(f"{omega_x[i]}    {TC[i]}\n")
 
-plot.plot_transmission_spectra_OxWaveLength(omega_x, TC)    
-plot.plot_transmission_spectra(omega_x, TC)
+print(f' create derivative plot? \n yes: + \n no: -')
+
+flag_dy_dx_plot = str(input())
+
+if (flag_dy_dx_plot == '+'):
+  plot.plot_diff_Tw(omega_x, TC)
+elif (flag_dy_dx_plot == '-'): 
+  plot.plot_transmission_spectra(omega_x, TC)
+else:
+  print(f'incorrect input')
+  
+
+#plot.plot_transmission_spectra_OxWaveLength(omega_x, TC)    
+#plot.plot_transmission_spectra(omega_x, TC)
+#plot.plot_diff_Tw(omega_x, TC)
 #plt.show()
+'''
+print('Input Qx1:')
+Qx1 = float(input())
+print('Input Qx2:')
+Qx2 = float(input())
+
+print(f'Find half-hight on half-width between {Qx1} and {Qx2}')
+'''
+
+
 
 
 

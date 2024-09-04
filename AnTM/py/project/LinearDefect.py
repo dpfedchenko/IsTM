@@ -1,4 +1,4 @@
-No = 1.42
+No = 1.70294
 
 mu_o = 1
 epsilon_o = No**2 / mu_o

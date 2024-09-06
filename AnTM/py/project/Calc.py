@@ -1,20 +1,25 @@
 import numpy as np
+from scipy.interpolate import CubicSpline, interp1d
 import LiquidCrystal, Boundary, Vacuum, EMwave, LinearDefect, TwistDefect, LiquidCrystal2
 
+import matplotlib.pyplot as plt
 #Constants for calculations
 I = complex(0, 1)
 Pi = np.pi
 
 def create_omega_x(omega_min, omega_max):
-  omega_x = np.linspace(omega_min, omega_max, 2000)
+  
+  omega_x = np.linspace(omega_min, omega_max, 1000000)
   return omega_x
 
 def create_TC(omega_x):
+  
   TC = [0] * len(omega_x)
   
   return TC
 
 def vo_calc(Theta, Phi):
+  
   Theta_rad = Theta * (Pi / 180)
   Phi_rad = Phi * (Pi / 180)
   '''
@@ -34,6 +39,7 @@ def vo_calc(Theta, Phi):
   return Vo
 
 def tdm_calc(D_D):
+  
   TDM = [
   [0, 0, 0, 0],
   [0, 0, 0, 0], 
@@ -86,14 +92,7 @@ def lcm_calc(omega, No, Ne, Lo, L, X_M, xi):
   SumS = SI + SS
 
   LCM = LiquidCrystal.Matrix
-  '''
-  LCM = [
-    [0, 0, 0, 0],
-    [0, 0, 0, 0], 
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
-    ]
-  '''
+  
   LCM[0][0] = 1/2*((-2*I*X_M*No*Ne**2+(-8*I*No**2+2*I*B)*Ne+I*No*(-2*No**2+B)*X_M)*DifS+2*No**2*DifC-2*Ne**2*DifC+A*SumC-2*I*Ne*A*SumS)/A
   LCM[0][1] = -1/2*I*No*DifS*(-2*Ne**2-2*No**2+B)*(2+X_M)*(-2+X_M)/A/(2*xi-X_M)
   LCM[0][2] = -2*(2+X_M)*((No+Ne)**2*DifS-1/2*A*SumS+I*No*DifC+I*Ne*DifC)*Pi/Lo/omega/A/(xi+1)
@@ -134,14 +133,7 @@ def lcm_calc2(omega, No, Ne, Lo, L, X_M, xi):
   SumS = SI + SS
 
   LCM2 = LiquidCrystal2.Matrix
-  '''
-  LCM = [
-    [0, 0, 0, 0],
-    [0, 0, 0, 0], 
-    [0, 0, 0, 0],
-    [0, 0, 0, 0]
-    ]
-  '''
+  
   LCM2[0][0] = 1/2*((-2*I*X_M*No*Ne**2+(-8*I*No**2+2*I*B)*Ne+I*No*(-2*No**2+B)*X_M)*DifS+2*No**2*DifC-2*Ne**2*DifC+A*SumC-2*I*Ne*A*SumS)/A
   LCM2[0][1] = -1/2*I*No*DifS*(-2*Ne**2-2*No**2+B)*(2+X_M)*(-2+X_M)/A/(2*xi-X_M)
   LCM2[0][2] = -2*(2+X_M)*((No+Ne)**2*DifS-1/2*A*SumS+I*No*DifC+I*Ne*DifC)*Pi/Lo/omega/A/(xi+1)
@@ -162,6 +154,7 @@ def lcm_calc2(omega, No, Ne, Lo, L, X_M, xi):
   return LCM2
 
 def ldm_calc(omega, Nd, Ld):
+  
   LDM = [
   [0, 0, 0, 0],
   [0, 0, 0, 0], 
@@ -177,6 +170,7 @@ def ldm_calc(omega, Nd, Ld):
   return LDM 
 
 def bm_calc(epsilon_o_L, mu_o_L, epsilon_e_L, mu_e_L, epsilon_o_R, mu_o_R, epsilon_e_R, mu_e_R):
+  
   BM = [
     [1, 0, 0, 0],
     [0, 1, 0, 0], 
@@ -204,6 +198,7 @@ def bm_calc(epsilon_o_L, mu_o_L, epsilon_e_L, mu_e_L, epsilon_o_R, mu_o_R, epsil
   return BM
 
 def fm_calc(List_of_finite_SM):
+  
   FM = List_of_finite_SM[0]
   for i in range(1, len(List_of_finite_SM)):
       FM = np.dot(FM, List_of_finite_SM[i])
@@ -223,14 +218,151 @@ def transmission_coef(FM, Vo):
   Tc = abs(Tx)** 2 + abs(Ty)** 2
 
   return Tc
-'''
+
 def derivative(x, y):
+  
   dy = np.diff(y)
   dx = np.diff(x)
   dy_dx = dy / dx
   
   x_derivative = x[:-1]
-  normalize_dy_dx = dy_dx / (max(dy_dx) - min(dy_dx))
+  normalize_dy_dx = (dy_dx / (max(dy_dx) - min(dy_dx))) + abs(min((dy_dx / (max(dy_dx) - min(dy_dx)))))
   
-  return x_derivative, normalize_dy_dx
-'''
+  dy0 = abs(min((dy_dx / (max(dy_dx) - min(dy_dx)))))
+  
+  return x_derivative, normalize_dy_dx, dy0
+  
+def Q_value(x, y, derivative):
+  
+  # ВЫДЕЛЕНИЕ ОБЛАСТИ С ПИКОМ
+  dx, dy_dx, dy_dx0 = derivative
+  
+  idx_of_max_dy_dx = np.argmax(dy_dx)
+  idx_of_min_dy_dx = np.argmin(dy_dx)
+  
+  #print(f'index of max dy/dx = {idx_of_max_dy_dx}')
+  #print(f'index of min dy/dx = {idx_of_min_dy_dx}')
+  
+  
+  #print(f'Поиск правого нуля проивзодной: \n')
+  for i in range(idx_of_min_dy_dx, len(dx), 1):
+    if (dy_dx[i] > dy_dx0):
+      idx_right_null = i
+      value_right_null = dy_dx[i]
+      omega_border_right = dx[i]
+      break
+    else: 
+      i+=1
+  
+  #print(f'index of right 0 = {idx_right_null}')   
+  #print(f'value of right 0 = {value_right_null}')  
+  #print(f'value of omega right border = {omega_border_right}') 
+  
+  #print(f'Поиск левого нуля производной')
+  
+  for i in range(idx_of_max_dy_dx, 0, -1):
+    if(dy_dx[i] < dy_dx0):
+      idx_left_null = i
+      value_left_null = dy_dx[i]
+      omega_border_left = dx[i]
+      break
+    else:  
+      i-=1
+  
+  #print(f'index of left 0 = {idx_left_null}')   
+  #print(f'value of left 0 = {value_left_null}')
+  #print(f'value of omega left border = {omega_border_left}')   
+  
+  cropped_y = y[idx_left_null:idx_right_null]
+  cropped_x = x[idx_left_null:idx_right_null]
+  
+  max_cropped_y = max(cropped_y)
+  idx_max_cropped_y = np.argmax(cropped_y)
+  omega_of_max_transmission = cropped_x[idx_max_cropped_y]
+  
+  #print(f'max value of transmission = {max_cropped_y} = {max_cropped_y*100}% ')
+  #print(f'index of max value of transmission = {idx_max_cropped_y}')
+  #rint(f'omega of max transmisison = {omega_of_max_transmission}')
+  
+  
+  ## Сплайн-интерполяция + линейная интерполяция для полуширины
+  ########################################################################################################################################################
+  CubSpl = CubicSpline(cropped_x, cropped_y)
+  SplineItp_cropped_x = np.linspace(cropped_x[0], cropped_x[-1], 100000000)
+  SplineItp_cropped_y = CubSpl(SplineItp_cropped_x)
+  
+  ### Определение максимального значения пропускания и соответствующей ему частоты
+  max_SplineItp_cropped_y = max(SplineItp_cropped_y)
+  idx_max_SplineItp_cropped_y = np.argmax(SplineItp_cropped_y)
+  omega_of_maxTransmission_SplineItp = SplineItp_cropped_x[idx_max_SplineItp_cropped_y]
+  
+  print(f'max value of transmission (SplItp) = {max_SplineItp_cropped_y}')
+  print(f'omega of max value of transmission (SplItp) = {omega_of_maxTransmission_SplineItp}')
+  print()
+  
+  ### Определение частот при которых пропускание равно половине от максимального (полувысоте)
+  half_height_SplineItp = max_SplineItp_cropped_y / 2
+  
+  Q_left_w_area = SplineItp_cropped_x[0:idx_max_SplineItp_cropped_y]
+  Q_left_T_area = SplineItp_cropped_y[0:idx_max_SplineItp_cropped_y]
+  
+  Q_right_w_area = SplineItp_cropped_x[idx_max_SplineItp_cropped_y:-1]
+  Q_right_T_area = SplineItp_cropped_y[idx_max_SplineItp_cropped_y:-1]
+  
+  interp_func_left = interp1d(
+    Q_left_T_area, 
+    Q_left_w_area, 
+    kind='linear', 
+    bounds_error=False, fill_value='extrapolate'
+  )
+  
+  interp_func_right = interp1d(
+    Q_right_T_area,
+    Q_right_w_area,
+    kind='linear', 
+    bounds_error=False, fill_value='extrapolate'
+  )
+  
+  left_w_at_hal_height = interp_func_left(half_height_SplineItp)
+  right_w_at_hal_height = interp_func_right(half_height_SplineItp)
+  hw_at_hh = right_w_at_hal_height - left_w_at_hal_height
+  
+  print(f'W1(T = T_max/2) = {left_w_at_hal_height}')
+  print(f'W2(T = T_max/2) = {right_w_at_hal_height}')
+  print(f'deltaW at hh = {hw_at_hh}')
+  print()
+  
+  Q = omega_of_maxTransmission_SplineItp / hw_at_hh
+  
+  #print(f'Добротность \nQ = {Q}')
+  
+  exponent = int(np.floor(np.log10(Q)))
+  mantissa = Q / (10 ** exponent)
+  formated_Q = f'{mantissa:.3f}e{exponent}'
+  
+  print(f'Добротность \nQ = {Q} = {formated_Q}')
+
+  ######################################################################################################################################################## 
+  
+  plt.plot(SplineItp_cropped_x, SplineItp_cropped_y, label='spline interpolation') 
+  plt.plot(cropped_x, cropped_y, 'o',color='red')
+  plt.yticks(np.arange(0, 1.25, 0.25))
+  plt.grid()
+  plt.show()
+      
+      
+  
+  
+
+  
+  
+  
+   
+  
+
+  
+  
+  
+  
+  
+

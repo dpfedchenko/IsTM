@@ -1,6 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import Calc, LiquidCrystal, Boundary, Vacuum, StructureBuilding, EMwave, LinearDefect, TwistDefect, plot, LiquidCrystal2
+import time
+
+start_time = time.time()
 
 Structure = ["V", "LC", "LD","LC", "V"]  
 
@@ -21,7 +24,7 @@ StructureMatrixes = {
   }
 
 #ax = plt.figure().add_subplot(projection='3d')
-omega_x = Calc.create_omega_x(2, 6)
+omega_x = Calc.create_omega_x(3, 4)
 TC = Calc.create_TC(omega_x)
 
 '''
@@ -61,7 +64,8 @@ for i in range(0, len(omega_x)):
     Vo = Calc.vo_calc(EMwave.Theta, EMwave.Phi)
     Tc = Calc.transmission_coef(FM, Vo)
     TC[i] = Tc
-
+    
+'''
 with open('lc_ld_lc108.txt', 'w') as file:
   file.write('omega:    Tc: \n')
 
@@ -78,20 +82,18 @@ elif (flag_dy_dx_plot == '-'):
   plot.plot_transmission_spectra(omega_x, TC)
 else:
   print(f'incorrect input')
-  
+'''  
+
+plot.plot_TC_dTC(omega_x, TC, Calc.derivative(omega_x, TC))
+Calc.Q_value(omega_x, TC, Calc.derivative(omega_x, TC))
+
+end_time = time.time()
+print(f'Время выполнения кода: {end_time - start_time:.2f} секунд')
 
 #plot.plot_transmission_spectra_OxWaveLength(omega_x, TC)    
 #plot.plot_transmission_spectra(omega_x, TC)
 #plot.plot_diff_Tw(omega_x, TC)
-#plt.show()
-'''
-print('Input Qx1:')
-Qx1 = float(input())
-print('Input Qx2:')
-Qx2 = float(input())
 
-print(f'Find half-hight on half-width between {Qx1} and {Qx2}')
-'''
 
 
 

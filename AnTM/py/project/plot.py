@@ -24,34 +24,24 @@ def plot3d_TwLo(x, y, z):
   fig, ax = plt.subplot()
   ax.plot_wireframe(x, y, z, rstride = 1, cstride = 1)
   plt.show()
+
+def plot_TC_dTC(x, y, derivative):
   
-def plot_diff_Tw(x, y):
-  dy = np.diff(y)
-  dx = np.diff(x)
-  dy_dx = dy / dx
-  
-  x_derivative = x[:-1]
-  normalize_dy_dx = dy_dx / (max(dy_dx) - min(dy_dx))
+  dx, dy_dx, dy_dx0 = derivative
+  dy_dx0 = [dy_dx0] * len(x)
   
   plt.figure(figsize=(10,6))
+  
   plt.plot(x, y, label='T(w)')
-  plt.plot(x_derivative, normalize_dy_dx + abs(min(normalize_dy_dx)), color='orange', label='dT(w)/dw')
- 
-  yderiv0 = [abs(min(normalize_dy_dx))] * len(x)
-  y05 = [0.5] * len(x)
+  plt.plot(dx, dy_dx, label='dT(w)/dw', color='orange', alpha=0.7)
+  plt.plot(x, dy_dx0, color='orange', label='y`= 0', linewidth=0.8)
   
-  plt.plot(x, y05, color='red')
-  plt.plot(x, yderiv0, color='black')
+  plt.scatter([dx[np.argmax(dy_dx)], dx[np.argmin(dy_dx)]], [max(dy_dx), min(dy_dx)], color='darkorange')
   
-  '''
-  y1 = [1] * len(x)
-  y0 = [0] * len(x)
-  plt.plot(x, y1, color='black', linestyle='--')
-  plt.plot(x, y05, color='black', linestyle='--')
-  plt.plot(x, y0, color='black', linestyle='--')
-  '''
+  plt.yticks(np.arange(0, 1.25, 0.25))
   plt.grid()
-  #plt.tight_layout()
   plt.show()
+  
+  
   
   

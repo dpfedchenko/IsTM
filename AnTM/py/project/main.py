@@ -1,8 +1,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import Calc, LiquidCrystal, Boundary, Vacuum, StructureBuilding, EMwave, LinearDefect, TwistDefect, plot, LiquidCrystal2
+import time
 
+start_time = time.time()
+
+Structure = ["V", "LC", "LD","LC", "V"]  
+
+<<<<<<< HEAD
 Structure = ["V", "LC", "TD","LC2", "V"]  
+=======
+>>>>>>> e771c5a2896e21c8de98635712e883388dd82592
 StructureProperties = {
   "V": [Vacuum.epsilon_o, Vacuum.mu_o, Vacuum.epsilon_e, Vacuum.mu_e],
   "LC": [LiquidCrystal.epsilon_o, LiquidCrystal.mu_o, LiquidCrystal.epsilon_e, LiquidCrystal.mu_e],
@@ -20,7 +28,7 @@ StructureMatrixes = {
   }
 
 #ax = plt.figure().add_subplot(projection='3d')
-omega_x = Calc.create_omega_x(5, 15)
+omega_x = Calc.create_omega_x(3, 4)
 TC = Calc.create_TC(omega_x)
 
 '''
@@ -60,18 +68,52 @@ for i in range(0, len(omega_x)):
     Vo = Calc.vo_calc(EMwave.Theta, EMwave.Phi)
     Tc = Calc.transmission_coef(FM, Vo)
     TC[i] = Tc
+<<<<<<< HEAD
 
 ##with open('lc_ld_lc108.txt', 'w') as file:
 ##  file.write('omega:    Tc: \n')
 ##
 ##  for i in range(len(omega_x)):
 ##    file.write(f"{omega_x[i]}    {TC[i]}\n")
+=======
+    
+'''
+with open('lc_ld_lc108.txt', 'w') as file:
+  file.write('omega:    Tc: \n')
+>>>>>>> e771c5a2896e21c8de98635712e883388dd82592
 
 ##plot.plot_transmission_spectra_OxWaveLength(omega_x, TC)    
 ##plot.plot_transmission_spectra(omega_x, TC)
 plot.plot_TD(omega_x, TC, 600, 750, 'red')
 
+<<<<<<< HEAD
 #plt.show()
+=======
+print(f' create derivative plot? \n yes: + \n no: -')
+
+flag_dy_dx_plot = str(input())
+
+if (flag_dy_dx_plot == '+'):
+  plot.plot_diff_Tw(omega_x, TC)
+elif (flag_dy_dx_plot == '-'): 
+  plot.plot_transmission_spectra(omega_x, TC)
+else:
+  print(f'incorrect input')
+'''  
+
+plot.plot_TC_dTC(omega_x, TC, Calc.derivative(omega_x, TC))
+Calc.Q_value(omega_x, TC, Calc.derivative(omega_x, TC))
+
+end_time = time.time()
+print(f'Время выполнения кода: {end_time - start_time:.2f} секунд')
+
+#plot.plot_transmission_spectra_OxWaveLength(omega_x, TC)    
+#plot.plot_transmission_spectra(omega_x, TC)
+#plot.plot_diff_Tw(omega_x, TC)
+
+
+
+>>>>>>> e771c5a2896e21c8de98635712e883388dd82592
 
 
 

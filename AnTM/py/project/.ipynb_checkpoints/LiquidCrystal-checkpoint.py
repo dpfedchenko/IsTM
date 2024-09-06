@@ -13,7 +13,9 @@ _xi = 1 / xi
 
 X_M = xi + _xi
 
+# Шаг спирали 
 Lo = 1
+
 L = 5
 
 Matrix = [

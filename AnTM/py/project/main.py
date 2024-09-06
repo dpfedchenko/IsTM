@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import Calc, LiquidCrystal, Boundary, Vacuum, StructureBuilding, EMwave, LinearDefect, TwistDefect, plot, LiquidCrystal2
 
-Structure = ["V", "LC", "LD","LC2", "V"]  
+Structure = ["V", "LC", "TD","LC2", "V"]  
 StructureProperties = {
   "V": [Vacuum.epsilon_o, Vacuum.mu_o, Vacuum.epsilon_e, Vacuum.mu_e],
   "LC": [LiquidCrystal.epsilon_o, LiquidCrystal.mu_o, LiquidCrystal.epsilon_e, LiquidCrystal.mu_e],
@@ -61,14 +61,16 @@ for i in range(0, len(omega_x)):
     Tc = Calc.transmission_coef(FM, Vo)
     TC[i] = Tc
 
-with open('lc_ld_lc108.txt', 'w') as file:
-  file.write('omega:    Tc: \n')
+##with open('lc_ld_lc108.txt', 'w') as file:
+##  file.write('omega:    Tc: \n')
+##
+##  for i in range(len(omega_x)):
+##    file.write(f"{omega_x[i]}    {TC[i]}\n")
 
-  for i in range(len(omega_x)):
-    file.write(f"{omega_x[i]}    {TC[i]}\n")
+##plot.plot_transmission_spectra_OxWaveLength(omega_x, TC)    
+##plot.plot_transmission_spectra(omega_x, TC)
+plot.plot_TD(omega_x, TC, 600, 750, 'red')
 
-plot.plot_transmission_spectra_OxWaveLength(omega_x, TC)    
-plot.plot_transmission_spectra(omega_x, TC)
 #plt.show()
 
 

@@ -33,7 +33,7 @@ def plot_TC_dTC(x, y, derivative):
   plt.figure(figsize=(10,6))
   
   plt.plot(x, y, label='T(w)')
-  plt.plot(dx, dy_dx, label='dT(w)/dw', color='orange', alpha=0.7)
+  plt.scatter(dx, dy_dx, label='dT(w)/dw', color='orange', alpha=0.7)
   plt.plot(x, dy_dx0, color='orange', label='y`= 0', linewidth=0.8)
   
   plt.scatter([dx[np.argmax(dy_dx)], dx[np.argmin(dy_dx)]], [max(dy_dx), min(dy_dx)], color='darkorange')

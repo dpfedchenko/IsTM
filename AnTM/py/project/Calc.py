@@ -1,15 +1,17 @@
 import numpy as np
 from scipy.interpolate import CubicSpline, interp1d
 import LiquidCrystal, Boundary, Vacuum, EMwave, LinearDefect, TwistDefect, LiquidCrystal2
-
+import StructureBuilding, SetStructure
 import matplotlib.pyplot as plt
+import time
+
 #Constants for calculations
 I = complex(0, 1)
 Pi = np.pi
 
 def create_omega_x(omega_min, omega_max):
   
-  omega_x = np.linspace(omega_min, omega_max, 1000000)
+  omega_x = np.linspace(omega_min, omega_max, 50000)
   return omega_x
 
 def create_TC(omega_x):
@@ -288,7 +290,7 @@ def Q_value(x, y, derivative):
   ## Сплайн-интерполяция + линейная интерполяция для полуширины
   ########################################################################################################################################################
   CubSpl = CubicSpline(cropped_x, cropped_y)
-  SplineItp_cropped_x = np.linspace(cropped_x[0], cropped_x[-1], 100000000)
+  SplineItp_cropped_x = np.linspace(cropped_x[0], cropped_x[-1], 100000)
   SplineItp_cropped_y = CubSpl(SplineItp_cropped_x)
   
   ### Определение максимального значения пропускания и соответствующей ему частоты
@@ -296,8 +298,8 @@ def Q_value(x, y, derivative):
   idx_max_SplineItp_cropped_y = np.argmax(SplineItp_cropped_y)
   omega_of_maxTransmission_SplineItp = SplineItp_cropped_x[idx_max_SplineItp_cropped_y]
   
-  print(f'max value of transmission (SplItp) = {max_SplineItp_cropped_y}')
-  print(f'omega of max value of transmission (SplItp) = {omega_of_maxTransmission_SplineItp}')
+  print(f'\nMax value of transmission (SplItp) = {max_SplineItp_cropped_y} = {max_SplineItp_cropped_y*100:.2f}%')
+  print(f'Omega of max value of transmission (SplItp) = {omega_of_maxTransmission_SplineItp}')
   print()
   
   ### Определение частот при которых пропускание равно половине от максимального (полувысоте)
@@ -313,14 +315,16 @@ def Q_value(x, y, derivative):
     Q_left_T_area, 
     Q_left_w_area, 
     kind='linear', 
-    bounds_error=False, fill_value='extrapolate'
+    bounds_error=False, 
+    fill_value='extrapolate'
   )
   
   interp_func_right = interp1d(
     Q_right_T_area,
     Q_right_w_area,
     kind='linear', 
-    bounds_error=False, fill_value='extrapolate'
+    bounds_error=False, 
+    fill_value='extrapolate'
   )
   
   left_w_at_hal_height = interp_func_left(half_height_SplineItp)
@@ -349,7 +353,120 @@ def Q_value(x, y, derivative):
   plt.yticks(np.arange(0, 1.25, 0.25))
   plt.grid()
   plt.show()
-      
+
+def Q_value_via_TcFunc():
+  
+  print()
+  print(f'Choose frequency area to calculate Q value')
+  
+  print(f'Set init omega:')
+  w1 = float(input())
+  print(f'Set finite omega:')
+  w2 = float(input())
+  
+  print(f'\n!!! Choose accuracy of calculation !!!')
+  print('Set steps between w1 and w2:')
+  steps = int(input())
+  print()
+  
+  start_time = time.time()
+  
+  frequencies_range = np.linspace(w1, w2 + (w2-w1) / steps, steps)
+  TC = create_TC(frequencies_range)
+  
+  for i in range(0, len(frequencies_range)):
+    omega = frequencies_range[i]
+    List_of_finite_SM = StructureBuilding.list_of_finite_SM(
+      lcm_calc(omega, LiquidCrystal.No, LiquidCrystal.Ne, LiquidCrystal.Lo, LiquidCrystal.L, LiquidCrystal.X_M, LiquidCrystal.xi),
+      ldm_calc(omega, LinearDefect.No, LinearDefect.L),
+      tdm_calc(TwistDefect.D_D),
+      lcm_calc2(omega, LiquidCrystal2.No, LiquidCrystal2.Ne, LiquidCrystal2.Lo, LiquidCrystal2.L, LiquidCrystal2.X_M, LiquidCrystal2.xi), 
+      SetStructure.Structure, 
+      SetStructure.StructureProperties
+      )
+    FM = fm_calc(List_of_finite_SM)
+    Vo = vo_calc(EMwave.Theta, EMwave.Phi)
+    Tc = transmission_coef(FM, Vo)
+    TC[i] = Tc
+  
+  maximum_transmission = max(TC)
+  idx_of_maxTransmission = np.argmax(TC)
+  frequency_of_maxTransmission = frequencies_range[idx_of_maxTransmission]
+  
+  print()
+  print(f'Maximum tramsmission = {maximum_transmission} = {100 * maximum_transmission:.4f}%')
+  print(f'Frequency of max transmission = {frequency_of_maxTransmission}')
+  print()
+  
+  half_height = maximum_transmission / 2
+  
+  left_range_of_frequensies = frequencies_range[0:idx_of_maxTransmission]
+  left_range_of_Transmission = TC[0:idx_of_maxTransmission]
+  
+  right_range_of_frequensies = frequencies_range[idx_of_maxTransmission:-1]
+  right_range_of_Transmission = TC[idx_of_maxTransmission:-1]
+  
+  interp_func_left = interp1d(
+    left_range_of_Transmission,
+    left_range_of_frequensies,
+    kind='linear', 
+    bounds_error=False, 
+    fill_value='extrapolate'
+  )
+  
+  interp_func_right = interp1d(
+    right_range_of_Transmission,
+    right_range_of_frequensies,
+    kind='linear', 
+    bounds_error=False, 
+    fill_value='extrapolate'
+  )
+  
+  left_w_at_hal_height = interp_func_left(half_height)
+  right_w_at_hal_height = interp_func_right(half_height)
+  hw_at_hh = right_w_at_hal_height - left_w_at_hal_height
+  
+  print()
+  print(f'W1 at T_max/2 = {left_w_at_hal_height}')
+  print(f'W2 at T_max/2 = {right_w_at_hal_height}')
+  print(f'deltaW at hh = {hw_at_hh}')
+  print()
+  
+  
+  Q = frequency_of_maxTransmission / hw_at_hh
+  
+  exponent = int(np.floor(np.log10(Q)))
+  mantissa = Q / (10 ** exponent)
+  formated_Q = f'{mantissa:.3f}e{exponent}'
+  
+  print()
+  print(f'Q-factor \nQ = {Q} = {formated_Q}')
+  print()
+  
+  end_time = time.time()
+  calc_time = end_time - start_time
+  print()
+  print(f'Calculation time of Q-factor: {calc_time:.3f} second')
+  print()
+  
+  plt.scatter(frequencies_range, TC)
+  plt.yticks(np.arange(0, 1.25, 0.25))
+  plt.grid()
+  plt.show()
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+    
+        
       
   
   

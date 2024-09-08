@@ -14,7 +14,7 @@ _xi = 1 / xi
 X_M = xi + _xi
 
 Lo = 1
-L = 5
+L = 2
 
 Matrix = [
   [0, 0, 0, 0],

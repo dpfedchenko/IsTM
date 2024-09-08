@@ -1,12 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import Calc, LiquidCrystal, Boundary, Vacuum, StructureBuilding, EMwave, LinearDefect, TwistDefect, plot, LiquidCrystal2
-import time
+import Calc, LiquidCrystal, Boundary, Vacuum, StructureBuilding, EMwave, LinearDefect, TwistDefect, plot, LiquidCrystal2, SetStructure
 
-start_time = time.time()
+#Structure = ["V", "LC", "TD", "LC2", "TD","LC", "V"]  
+Structure = SetStructure.Structure
+#Structure = ["V", "LC", "V"]
 
-Structure = ["V", "LC", "LD","LC", "V"]  
-
+StructureProperties = SetStructure.StructureProperties
+'''
 StructureProperties = {
   "V": [Vacuum.epsilon_o, Vacuum.mu_o, Vacuum.epsilon_e, Vacuum.mu_e],
   "LC": [LiquidCrystal.epsilon_o, LiquidCrystal.mu_o, LiquidCrystal.epsilon_e, LiquidCrystal.mu_e],
@@ -14,7 +15,7 @@ StructureProperties = {
   "TD": [TwistDefect.epsilon_o, TwistDefect.mu_o, TwistDefect.epsilon_e, TwistDefect.mu_e],
   "LC2": [LiquidCrystal2.epsilon_o, LiquidCrystal2.mu_o, LiquidCrystal2.epsilon_e, LiquidCrystal2.mu_e],
   }
-
+'''
 StructureMatrixes = {
   "V": Vacuum.unit_VM,
   "LC": Calc.lcm_calc,
@@ -24,7 +25,7 @@ StructureMatrixes = {
   }
 
 #ax = plt.figure().add_subplot(projection='3d')
-omega_x = Calc.create_omega_x(3, 4)
+omega_x = Calc.create_omega_x(2, 5)
 TC = Calc.create_TC(omega_x)
 
 '''
@@ -71,25 +72,18 @@ with open('lc_ld_lc108.txt', 'w') as file:
 
   for i in range(len(omega_x)):
     file.write(f"{omega_x[i]}    {TC[i]}\n")
-
-print(f' create derivative plot? \n yes: + \n no: -')
-
-flag_dy_dx_plot = str(input())
-
-if (flag_dy_dx_plot == '+'):
-  plot.plot_diff_Tw(omega_x, TC)
-elif (flag_dy_dx_plot == '-'): 
-  plot.plot_transmission_spectra(omega_x, TC)
-else:
-  print(f'incorrect input')
-'''  
+'''
 
 plot.plot_TC_dTC(omega_x, TC, Calc.derivative(omega_x, TC))
+Calc.Q_value_via_TcFunc()
 Calc.Q_value(omega_x, TC, Calc.derivative(omega_x, TC))
-
-end_time = time.time()
-print(f'Время выполнения кода: {end_time - start_time:.2f} секунд')
-
+'''
+print(f'Calculate the value of the Q-factor? \n"yes" or "no"')
+answer_Qfactor = str(input())
+if answer_Qfactor == 'yes':
+  Calc.Q_value_via_TcFunc()
+'''
+#Calc.Q_value(omega_x, TC, Calc.derivative(omega_x, TC))
 #plot.plot_transmission_spectra_OxWaveLength(omega_x, TC)    
 #plot.plot_transmission_spectra(omega_x, TC)
 #plot.plot_diff_Tw(omega_x, TC)

@@ -3,7 +3,10 @@ import numpy as np
 Pi = np.pi
 I = complex(0, 1)
 
-# Q, pitch, NeC, NoC, Ld, N0
+#
+# List of variables
+# Q, pitch, N_pitch, NeC, NoC, Ld, N0
+
 Q = 20
 pitch = 1
 N_pitch = 8/4

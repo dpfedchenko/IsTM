@@ -5,14 +5,6 @@ import math
 # TM modules
 import IsTM_matrix as ITMm
 
-def printE (E):
-    for i in range(len(E)):
-        print(str("{:.2f}".format(E[i][0])) + ", " + str("{:.2f}".format(E[i][1])))
-
-def print2M (M):
-    print(str("{:.2f}".format(M[0][0])) + " | " + str("{:.2f}".format(M[0][1])))
-    print(str("{:.2f}".format(M[1][0])) + " | " + str("{:.2f}".format(M[1][1])))
-
 # TMB_go
 def goTM(SL, Nsub, Out, Kg):
     ng, zg = [], [0]
@@ -25,20 +17,19 @@ def goTM(SL, Nsub, Out, Kg):
     zg = zg[1:len(zg)]
     dzg = np.diff(np.array(zg))
     Tg, E = [], []
+    
     # TMC
     for k in Kg:
         for i in range(len(zg)):
             E.append([0, 0])
         E[-1] = Out
         for j in range(len(zg) - 2, -1, -1):
-            if (dzg[j] != 0):
+            if dzg[j]:
                 E[j] = ITMm.iPr(k, ng[j], dzg[j], E[j + 1])
             else:
                 E[j] = (ITMm.iD(ng[j]) @\
                         ITMm.D(ng[j + 1]) @\
                         np.array(E[j + 1])).tolist()
-                print2M(ITMm.iD(ng[j]))
-                print('\n')
         if len(Kg) == 1:
             rAg, rBg, aAg, aBg, pAg, pBg = [], [], [], [], [], []
             for i in range(len(E)):
@@ -48,5 +39,4 @@ def goTM(SL, Nsub, Out, Kg):
                 aBg.append(abs(E[i][1]))
         else:
             Tg.append(abs(E[-1][0]/E[0][0])**2)
-    
-    return [zg, E, Tg]
+    return [zg, E, Tg, ng]

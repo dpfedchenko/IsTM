@@ -2,15 +2,18 @@ import cmath
 import numpy as np
 import IsTM_build as ITMb
 import IsTM_plot  as ITMp
-from IsTM_materials import SiO2, Air
+from IsTM_materials import SiO2, Air, thSiO2, thAir
 I, Pi = complex(0, 1), np.pi
-SL = [Air, SiO2, Air] * 1
+SL = [Air, SiO2, Air, SiO2, thAir, SiO2, Air, SiO2, Air]
 KN, Nsub = 51, 25
 Kg = [1]
-#Kg = np.linspace(0, 2, KN)
+Kg = np.linspace(0, 2, KN)
 
-Out = [1, 0]
+Out = [0.6, 0]
 [zg, E, Tg, ng] = ITMb.goTM(SL, Nsub, Out, Kg)
+
+print(*E, sep = '\n')
+
 Ag, Bg = [], []
 for i in range(len(E)):
         Ag.append(E[i][0].real)

@@ -4,7 +4,7 @@ import IsTM_build as ITMb
 import IsTM_plot  as ITMp
 from IsTM_materials import SiO2, Air, thSiO2, thAir
 I, Pi = complex(0, 1), np.pi
-SL = [Air, SiO2, Air, SiO2, thAir, SiO2, Air, SiO2, Air]
+SL = [Air] + [SiO2] * 3 + [Air] + [SiO2] * 2 + [Air]
 KN, Nsub = 51, 25
 Kg = [1]
 Kg = np.linspace(0, 2, KN)

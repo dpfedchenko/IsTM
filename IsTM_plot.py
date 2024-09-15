@@ -1,35 +1,25 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
-# TMS
-def plotTM(zg, Kg, rAg, rBg, Tg, _rAg, _rBg, _Tg):
-    diffTg = []
-    for i in range(len(Tg)):
-        diffTg.append(Tg[i] - _Tg[i])
+def plot_TM(zg, ng, Kg, Tg, E):
+    Ag, Bg , sAB = [], [], []
+    for i in range(len(E)):
+            Ag.append(E[i][0].real)
+            Bg.append(E[i][1].real)
+            sAB.append(abs(E[i][0] + E[i][1]))
+             
     if len(Kg) == 1:
-        fig, ax = plt.subplots(1, 2)
-        ax[0].plot(zg, _rAg, color = 'red', label = 'A.real')
-        ax[0].plot(zg, _rBg, color = 'blue', label = 'B.real')
-        ax[0].set(xlabel='z', ylabel=' ', title='The opposite direction')
-        ax[0].set(xlabel='z', ylabel=' ')
-        ax[0].legend()
-        
-        ax[1].plot(zg, rAg, color = 'red', label = 'A.real')
-        ax[1].plot(zg, rBg, color = 'blue', label = 'B.real')
-        ax[1].set(xlabel='z', ylabel=' ', title='The right direction')
-        ax[1].set(xlabel='z', ylabel=' ')
-        ax[1].legend()
-
+        fig, ax = plt.subplots()
+        for i in range (len(zg) - 1):
+             ax.plot([zg[i], zg[i + 1]], [ng[i], ng[i + 1]], c = '#00ff00')
+        ax.plot(zg, Ag, c = 'r', label = 'A')
+        ax.plot(zg, Bg, c = 'b', label = 'B')
+        ax.plot(zg, sAB, c = 'm')
+        ax.set(xlabel = 'z', ylabel = 'Value')
+        ax.legend()
         plt.show()
     else:
-        fig, ax = plt.subplots(1, 2)
-        ax[0].plot(Kg, _Tg, color = 'red', label = '$T^\prime$')
-        ax[0].plot(Kg, diffTg, color = 'blue', label = '$T - T^\prime$')
-        ax[0].set(xlabel='Wave vector', ylabel='Transmittance',  title='The opposite direction')
-        ax[0].legend()
-        
-
-        ax[1].plot(Kg, Tg, color = 'red', label = '$T$')
-        ax[1].set(xlabel='Wave vector', title='The right direction')
-        ax[1].legend()
-
+        fig, ax = plt.subplots()
+        ax.plot(Kg, Tg, c = 'red')
+        ax.set(xlabel = 'Wave vector', ylabel = 'Transmittance')
         plt.show()

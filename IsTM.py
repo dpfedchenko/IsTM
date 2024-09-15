@@ -1,51 +1,16 @@
-# Python libraries
-import cmath, numpy as np
+import numpy as np
+from IsTM_materials import SiO2, Air
+from IsTM_calc import calculate_TM
+from IsTM_plot import plot_TM
 
-# Transfer Matrix modules
-import IsTM_build as ITMb
-import IsTM_plot as ITMp
+SL = [Air, SiO2, Air] * 2
+KN, Nsub = 51, 25
 
-# Constants
-I, Pi = complex(0, 1), np.pi
-
-# Layers
-SiO2 = [3, 0.25/3]
-Air =  [1, 0.25]
-
-# Structure
-SL = [Air, SiO2, Air] * 1
-
-# TMA
-Nsub = 5
+#?
 Kg = [1]
-# Kg = np.linspace(0, 2, 101)
-# Kg = 1 + np.linspace(-1, 1, 201)
+#Kg = np.linspace(0, 2, KN)
 
-# Out
 Out = [1, 0]
 
-# TM-method
-zg = ITMb.goTM(SL, Nsub, Out, Kg)[0]
-E = ITMb.goTM(SL, Nsub, Out, Kg)[1]
-Tg = ITMb.goTM(SL, Nsub, Out, Kg)[2]
-
-print(zg)
-
-rAg, rBg = [], []
-for i in range(len(E)):
-        rAg.append(E[i][0].real)
-        rBg.append(E[i][1].real) 
-
-# The opposite direction
-In  = E[0]
-
-# TM-method
-_E = ITMb.goTM(SL[::-1], Nsub, In, Kg)[1]
-_Tg = ITMb.goTM(SL[::-1], Nsub, In, Kg)[2]
-
-_rAg, _rBg = [], []
-for i in range(len(E)):
-        _rAg.append(_E[i][0].real)
-        _rBg.append(_E[i][1].real)
-
-ITMp.plotTM(zg, Kg, rAg, rBg, Tg, _rAg, _rBg, _Tg)
+[zg, E, Tg, ng] = calculate_TM (SL, Nsub, Out, Kg)
+plot_TM (zg, ng, Kg, Tg, E)

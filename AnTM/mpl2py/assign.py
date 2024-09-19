@@ -1,14 +1,9 @@
-import numpy as np 
+from numpy import pi  
 
-# Constants
-Pi = np.pi
-I = complex(0, 1)
+Pi, I = pi, 1j
 
-# List of variables
-# Q, pitch, N_pitch, NeC, NoC, Ld, N0
-
-NK = 1000
-KR = [0.3, 1.7]
+NK = 100
+KR = [0.8, 1.2]
 
 Q = 20
 pitch = 1
@@ -21,6 +16,6 @@ N0 = 1
 Ld = 1/4
 
 phi_L = 0
-phi_R = 2 * Pi * N_pitch
+phi_R = 2 * pi * N_pitch
 
-deg = 2
+degTCLC = [1, 1]

@@ -1,5 +1,4 @@
-import numpy as np
-from numpy import ones, array, diff
+from numpy import array, diff
 from IsTM_matrix import Pr, iPr, D, iD
 from IsTM_build import build_ng, build_zg
 
@@ -18,7 +17,7 @@ def calculate_TM(SL, Nsub, Out, Kg):
   ng = build_ng(SL, Nsub)
   zg = build_zg(SL, Nsub)
   Lzg = len(zg)
-  dzg = np.diff(np.array(zg))
+  dzg = diff(array(zg))
   Tg = []
   for k in Kg:
     E = calculate_E(Lzg, dzg, ng, Out, k)

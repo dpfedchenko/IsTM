@@ -1,46 +1,51 @@
 import numpy as np
+from numpy import cos, sin, exp, diag, matrix
 
 # Constants
 from assign import Pi, I
 
 # Functions
-def Fe (K, Q, NeC, pitch): return np.exp (I * 2 * Pi * K * pitch/2/Q * NeC)
-def Fo (K, Q, NoC, pitch): return np.exp (I * 2 * Pi * K * pitch/2/Q * NoC)
-def FeD (K, Ld, N0): return np.exp (I * 2 * Pi * K * Ld/2 * N0)
+def F(K, Q, N, pitch):
+    return exp(I * 2 * Pi * K * pitch/2/Q * N)
+def FeD(K, Ld, N0):
+    return exp(I * 2 * Pi * K * Ld/2 * N0)
 
 # Matrix
-def Pr (K, Q, NeC, NoC, pitch):
-    Fof = Fo (K, Q, NoC, pitch)
-    Fef = Fe (K, Q, NeC, pitch)
-    return np.diag([1/Fof, Fof, 1/Fef, Fef])
+def Pr(K, Q, Ne, No, pitch):
+    Fo = F (K, Q, No, pitch)
+    Fe = F (K, Q, Ne, pitch)
+    return diag([Fo**-1, Fo, Fe**-1, Fe])
 
-def Dm (NoC, NeC): return np.matrix ([[1, 1, 0, 0], [NoC, -NoC, 0, 0], [0, 0, 1, 1], [0, 0, NeC, -NeC]])
+def Dm(No, Ne):
+    return matrix ([[1, 1, 0, 0], [No, -No, 0, 0], [0, 0, 1, 1], [0, 0, Ne, -Ne]])
 
-def Di (NoC, NeC): return Dm (NoC, NeC)**(-1)
+def Di(No, Ne):
+    return Dm (No, Ne)**-1
 
-def R1m (phi):
-    C, S = np.cos(phi), np.sin(phi)
-    return np.matrix([[C, 0, S, 0], [0, C, 0, S], [-S, 0, C, 0], [0, -S, 0, C]])
+def R1m(phi):
+    C, S = cos(phi), sin(phi)
+    return matrix([[C, 0, S, 0], [0, C, 0, S], [-S, 0, C, 0], [0, -S, 0, C]])
 
-def R2i (phi2):
-    C, S = np.cos (phi2), np.sin (phi2)
-    return R1m (phi2)**(-1)
+def R2i(phi2):
+    C, S = cos(phi2), sin(phi2)
+    return R1m (phi2)**-1
 
-# Matrix T1
-def T1 (delta, K, Q, NeC, NoC, pitch):
-    Fof = Fo (K, Q, NoC, pitch)
-    Fef = Fe (K, Q, NeC, pitch)
-    return np.matrix ([[np.cos(delta)/Fof**2, 0, (-1/2)*(np.sin(delta)*(NoC + NeC))/(Fof*Fef*NoC), (1/2)*(Fef*np.sin(delta)*(-NoC+NeC))/(Fof*NoC)],
-                      [0, Fof**2*np.cos(delta), (1/2)*(Fof*np.sin(delta)*(-NoC+NeC))/(Fef*NoC), (-1/2)*Fof*Fef*np.sin(delta)*(NoC+NeC)/NoC],
-                      [1/2*(np.sin(delta)*(NoC+NeC))/(Fef*NeC*Fof), 1/2*(Fof*np.sin(delta)*(-NoC+NeC))/(Fef*NeC), np.cos(delta)/Fef**2, 0],
-                      [1/2*(Fef*np.sin(delta)*(-NoC+NeC))/(NeC*Fof), 1/2*(Fof*Fef*np.sin(delta)*(NoC+NeC))/NeC, 0, Fef**2 * np.cos(delta)]])
+def _calculate_T_matrix(delta, Fo, Fe, No, Ne):
+    S = sin(delta)
+    C = cos(delta)
+    return np.matrix([
+      [C / Fo**2, 0, -.5 * (S * (No + Ne)) / (Fo * Fe * No), .5 * (Fe * S * (-No + Ne)) / (Fo * No)],
+      [0, Fo**2 * C, .5 * (Fo * S * (-No + Ne)) / (Fe * No), -.5 * Fo * Fe * S * (No + Ne) / No],
+      [.5 * (S * (No + Ne)) / (Fe * Ne * Fo), .5 * (Fo * S * (-No + Ne)) / (Fe * Ne), C / Fe**2, 0],
+      [.5 * (Fe * S * (-No + Ne)) / (Ne * Fo), .5 * (Fo * Fe * S * (No + Ne)) / Ne, 0, Fe**2 * C]
+    ])
 
-def T2 (delta, K, Ld, N0):
-    Fof = FeD (K, Ld, N0)
-    Fef = FeD (K, Ld, N0)
-    NoC = N0
-    NeC = N0
-    return np.matrix([[np.cos(delta)/Fof**2, 0, (-1/2)*(np.sin(delta)*(NoC + NeC))/(Fof*Fef*NoC), (1/2)*(Fef*np.sin(delta)*(-NoC+NeC))/(Fof*NoC)],
-                     [0, Fof**2*np.cos(delta), (1/2)*(Fof*np.sin(delta)*(-NoC+NeC))/(Fef*NoC), (-1/2)*Fof*Fef*np.sin(delta)*(NoC+NeC)/NoC],
-                     [1/2*(np.sin(delta)*(NoC+NeC))/(Fef*NeC*Fof), 1/2*(Fof*np.sin(delta)*(-NoC+NeC))/(Fef*NeC), np.cos(delta)/Fef**2, 0],
-                     [1/2*(Fef*np.sin(delta)*(-NoC+NeC))/(NeC*Fof), 1/2*(Fof*Fef*np.sin(delta)*(NoC+NeC))/NeC, 0, Fef**2 * np.cos(delta)]])
+def T1(delta, K, Q, Ne, No, pitch):
+    Fo = F(K, Q, No, pitch)
+    Fe = F(K, Q, Ne, pitch)
+    return _calculate_T_matrix(delta, Fo, Fe, No, Ne)
+
+def T2(delta, K, Ld, N0):
+    Fo = FeD(K, Ld, N0)
+    Fe = Fo
+    return _calculate_T_matrix(delta, Fo, Fe, N0, N0)

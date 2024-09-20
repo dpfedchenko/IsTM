@@ -3,17 +3,18 @@ from numpy import pi
 Pi, I = pi, 1j
 
 NK = 100
-KR = [0.8, 1.2]
+KR = [0, 7]
 
-Q = 20
-pitch = 1
-N_pitch = 8/4
+Q = 25
 
-NeC = 11/10
-NoC = 1/NeC
+pitch = 2
+N_pitch = 7
+
+Ne = 10.6/10
+No = 1/Ne
 
 N0 = 1
-Ld = 1/4
+Ld = 1
 
 phi_L = 0
 phi_R = 2 * pi * N_pitch

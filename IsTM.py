@@ -3,7 +3,7 @@ from IsTM_materials import SiO2, Air
 from IsTM_calc import calculate_TM
 from IsTM_plot import plot_TM
 
-SL = [Air, SiO2, Air] * 4
+SL = [SiO2, Air, SiO2]
 KN, Nsub = 51, 25
 
 #?

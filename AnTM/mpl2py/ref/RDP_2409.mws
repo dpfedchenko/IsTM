@@ -78,9 +78,9 @@ p Nonterminal" -1 24 "Courier" 1 12 0 0 0 1 2 1 2 2 2 2 0 0 0 1 }
 c Small207" -1 202 "Times" 1 1 0 0 0 1 1 2 2 2 2 2 0 0 0 1 }{CSTYLE "M
 aple Comment" -1 21 "Courier" 1 12 0 0 0 1 2 1 2 2 2 2 0 0 0 1 }
 {CSTYLE "2D Math Italic Small209" -1 203 "Times" 1 1 0 0 0 1 1 2 2 2 2
- 2 0 0 0 1 }{CSTYLE "Caption Reference" -1 204 "Times" 1 12 0 0 0 1 2 
-1 2 2 2 2 0 0 0 1 }{CSTYLE "2D Math Italic Small202" -1 205 "Times" 1 
-1 0 0 0 1 1 2 2 2 2 2 0 0 0 1 }{CSTYLE "Maple Input Placeholder" -1 
+ 2 0 0 0 1 }{CSTYLE "2D Math Italic Small202" -1 204 "Times" 1 1 0 0 0
+ 1 1 2 2 2 2 2 0 0 0 1 }{CSTYLE "Caption Reference" -1 205 "Times" 1 
+12 0 0 0 1 2 1 2 2 2 2 0 0 0 1 }{CSTYLE "Maple Input Placeholder" -1 
 206 "Courier New" 1 12 200 0 200 1 2 1 2 2 1 2 0 0 0 1 }{CSTYLE "Code"
  -1 207 "Courier New" 1 12 255 0 0 1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE "2D \+
 Math Italic Small206" -1 208 "Times" 1 1 0 0 0 1 1 2 2 2 2 2 0 0 0 1 }
@@ -93,39 +93,40 @@ c Small210212" -1 213 "Times" 1 1 0 0 0 1 1 2 2 2 2 2 0 0 0 1 }{CSTYLE
  "2D Comment" -1 18 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE 
 "Help Underlined Bold" -1 41 "Times" 1 12 0 0 0 1 1 1 2 2 2 2 0 0 0 1 
 }{CSTYLE "Copyright" -1 34 "Times" 1 10 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }
-{CSTYLE "Hyperlink" -1 17 "Times" 1 12 0 128 128 1 2 2 1 2 2 2 0 0 0 1
- }{CSTYLE "Help Underlined" -1 44 "Times" 1 12 0 0 0 1 2 2 1 2 2 2 0 0
- 0 1 }{CSTYLE "Prompt" -1 1 "Courier" 1 12 0 0 0 1 2 1 2 2 2 2 0 0 0 1
- }{CSTYLE "2D Math" -1 2 "Times" 1 12 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }
-{CSTYLE "2D Input" -1 19 "Times" 1 12 255 0 0 1 2 2 2 2 1 2 0 0 0 1 }
-{CSTYLE "2D Math Italic Small211" -1 214 "Times" 1 1 0 0 0 1 1 2 2 2 2
- 2 0 0 0 1 }{CSTYLE "2D Math Italic Small210" -1 215 "Times" 1 1 0 0 0
- 1 1 2 2 2 2 2 0 0 0 1 }{CSTYLE "Header and Footer" -1 216 "Times" 1 
-10 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE "Text" -1 217 "Times" 1 12 0 0
- 0 1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE "Help Notes" -1 37 "Times" 1 12 0 0 
-0 1 2 1 2 2 2 2 0 0 0 1 }{CSTYLE "Help Bold" -1 39 "Times" 1 12 0 0 0 
-1 2 1 2 2 2 2 0 0 0 1 }{CSTYLE "Equation Label" -1 218 "Times" 1 12 0 
-0 0 1 2 1 2 2 2 2 0 0 0 1 }{CSTYLE "LaTeX" -1 32 "Times" 1 12 0 0 0 1 
-2 2 2 2 2 2 0 0 0 1 }{CSTYLE "Atomic Variable" -1 219 "Times" 1 12 175
- 0 175 1 1 2 2 2 2 2 0 0 0 1 }{CSTYLE "Popup" -1 31 "Times" 1 12 0 128
- 128 1 1 2 1 2 2 2 0 0 0 1 }{CSTYLE "Dictionary Hyperlink" -1 45 "Time
-s" 1 12 147 0 15 1 2 2 1 2 2 2 0 0 0 1 }{CSTYLE "Caption Text" -1 220 
-"Times" 1 12 0 0 0 1 2 1 2 2 2 2 0 0 0 1 }{CSTYLE "Help Fixed" -1 23 "
-Courier" 1 10 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE "" -1 221 "Times" 1
- 10 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE "" -1 222 "Times" 1 10 0 0 0 
-1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE "" -1 223 "Times" 1 10 0 0 0 1 2 2 2 2 
-2 2 0 0 0 1 }{CSTYLE "" -1 224 "Times" 1 10 0 0 0 1 2 2 2 2 2 2 0 0 0 
-1 }{CSTYLE "" -1 225 "Times" 1 10 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }}
+{CSTYLE "2D Math Italic Small211214" -1 214 "Times" 1 1 0 0 0 1 1 2 2 
+2 2 2 0 0 0 1 }{CSTYLE "Hyperlink" -1 17 "Times" 1 12 0 128 128 1 2 2 
+1 2 2 2 0 0 0 1 }{CSTYLE "Help Underlined" -1 44 "Times" 1 12 0 0 0 1 
+2 2 1 2 2 2 0 0 0 1 }{CSTYLE "Prompt" -1 1 "Courier" 1 12 0 0 0 1 2 1 
+2 2 2 2 0 0 0 1 }{CSTYLE "2D Math" -1 2 "Times" 1 12 0 0 0 1 2 2 2 2 2
+ 2 0 0 0 1 }{CSTYLE "2D Input" -1 19 "Times" 1 12 255 0 0 1 2 2 2 2 1 
+2 0 0 0 1 }{CSTYLE "2D Math Italic Small211" -1 215 "Times" 1 1 0 0 0 
+1 1 2 2 2 2 2 0 0 0 1 }{CSTYLE "2D Math Italic Small210" -1 216 "Times
+" 1 1 0 0 0 1 1 2 2 2 2 2 0 0 0 1 }{CSTYLE "Header and Footer" -1 217 
+"Times" 1 10 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE "Text" -1 218 "Times
+" 1 12 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE "Help Notes" -1 37 "Times"
+ 1 12 0 0 0 1 2 1 2 2 2 2 0 0 0 1 }{CSTYLE "Help Bold" -1 39 "Times" 1
+ 12 0 0 0 1 2 1 2 2 2 2 0 0 0 1 }{CSTYLE "Equation Label" -1 219 "Time
+s" 1 12 0 0 0 1 2 1 2 2 2 2 0 0 0 1 }{CSTYLE "LaTeX" -1 32 "Times" 1 
+12 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE "Atomic Variable" -1 220 "Time
+s" 1 12 175 0 175 1 1 2 2 2 2 2 0 0 0 1 }{CSTYLE "Popup" -1 31 "Times"
+ 1 12 0 128 128 1 1 2 1 2 2 2 0 0 0 1 }{CSTYLE "Dictionary Hyperlink" 
+-1 45 "Times" 1 12 147 0 15 1 2 2 1 2 2 2 0 0 0 1 }{CSTYLE "Caption Te
+xt" -1 221 "Times" 1 12 0 0 0 1 2 1 2 2 2 2 0 0 0 1 }{CSTYLE "Help Fix
+ed" -1 23 "Courier" 1 10 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE "" -1 
+222 "Times" 1 10 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE "" -1 223 "Times
+" 1 10 0 0 0 1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE "" -1 224 "Times" 1 10 0 0
+ 0 1 2 2 2 2 2 2 0 0 0 1 }{CSTYLE "" -1 225 "Times" 1 10 0 0 0 1 2 2 2
+ 2 2 2 0 0 0 1 }}
 {SECT 0 {EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 30 "restart; with(Linea
 rAlgebra):\n" }{MPLTEXT 1 0 22 "#Jones:=[Ae,Be,Ao,Bo];" }{MPLTEXT 1 0 
 23 "#Fields:=[Ee,He,Eo,Ho];" }{MPLTEXT 1 0 24 "#Fields:=[Ex,Hy,Ey,-Hx]
-;" }}{PARA 0 "" 0 "" {TEXT 217 11 "Propagation" }}{PARA 0 "> " 0 "" 
+;" }}{PARA 0 "" 0 "" {TEXT 218 11 "Propagation" }}{PARA 0 "> " 0 "" 
 {MPLTEXT 1 0 20 "P:=Matrix(1..4,1..4," }{MPLTEXT 1 0 25 "Vector([1/Fo,
 Fo,1/Fe,Fe])" }{MPLTEXT 1 0 17 ",shape=diagonal):" }}{PARA 0 "" 0 "" 
-{TEXT 217 7 "Dynamic" }}{PARA 0 "> " 0 "" {MPLTEXT 1 0 100 "Dm := Matr
+{TEXT 218 7 "Dynamic" }}{PARA 0 "> " 0 "" {MPLTEXT 1 0 100 "Dm := Matr
 ix(1 .. 4, 1 .. 4, [[1, 1, 0, 0], [No, -No, 0, 0], [0, 0, 1, 1], [0, 0
 , Ne, -Ne]]): Di := " }{MPLTEXT 1 0 11 "simplify(1/" }{MPLTEXT 1 0 4 "
-Dm):" }}{PARA 0 "" 0 "" {TEXT 217 8 "Rotation" }}{PARA 0 "> " 0 "" 
+Dm):" }}{PARA 0 "" 0 "" {TEXT 218 8 "Rotation" }}{PARA 0 "> " 0 "" 
 {MPLTEXT 1 0 14 "R1m:=simplify(" }{MPLTEXT 1 0 61 "Matrix(1..4,1..4,[[
 C,0,S,0],[0,C,0,S],[-S,0,C,0],[0,-S,0,C]])" }{MPLTEXT 1 0 26 ",\{C=cos
 (phi),S=sin(phi)\}):" }}{PARA 0 "> " 0 "" {MPLTEXT 1 0 5 "R2i:=" }
@@ -133,21 +134,21 @@ C,0,S,0],[0,C,0,S],[-S,0,C,0],[0,-S,0,C]])" }{MPLTEXT 1 0 26 ",\{C=cos
 {MPLTEXT 1 0 11 ",\{phi=phi2\}" }{MPLTEXT 1 0 3 "): " }{MPLTEXT 1 0 
 34 "#whattype(R2i); #Determinant(T1); " }{MPLTEXT 1 0 25 "# TL := Iden
 tityMatrix(4)" }{MPLTEXT 1 0 1 ";" }{MPLTEXT 1 0 0 "" }}{PARA 0 "" 0 "
-" {TEXT 217 8 "Transfer" }}{PARA 0 "> " 0 "" {MPLTEXT 1 0 23 "T1:=P.Di
+" {TEXT 218 8 "Transfer" }}{PARA 0 "> " 0 "" {MPLTEXT 1 0 23 "T1:=P.Di
 .R2i.R1m.Dm.P: " }{MPLTEXT 1 0 54 "T1:=simplify(combine(simplify(T1,\{
 phi2-phi=delta\}))):\n" }{MPLTEXT 1 0 19 "print(R1m,Dm,P,T1);" }}
 {PARA 11 "" 1 "" {XPPMATH 20 "6&-I'MatrixG6$%*protectedGI(_syslibG6\"6
-#/I$%idGF(\"*!='=\"=-F$6#/F+\"*+Wg!=-F$6#/F+\"*WPb!=-F$6#/F+\"*GC\"=="
- }}}{EXCHG {PARA 11 "" 1 "" {XPPMATH 20 "6&-I'MatrixG6$%*protectedGI(_
-syslibG6\"6#/I$%idGF(\"5]$QoLuSuY%=-F$6#/F+\"51KgKV2WnW=-F$6#/F+\"5'[-
-ELuSuY%=-F$6#/F+\"5Yg'oLuSuY%=" }}}{EXCHG {PARA 0 "" 0 "" {TEXT 217 6 
-"Assign" }}{PARA 0 "> " 0 "" {MPLTEXT 1 0 16 "unassign('K'): \n" }
+#/I$%idGF(\"*cMX!=-F$6#/F+\"*GX\")z\"-F$6#/F+\"*7rwz\"-F$6#/F+\"*))ohH
+#" }}}{EXCHG {PARA 11 "" 1 "" {XPPMATH 20 "6&-I'MatrixG6$%*protectedGI
+(_syslibG6\"6#/I$%idGF(\"5]$QoLuSuY%=-F$6#/F+\"51KgKV2WnW=-F$6#/F+\"5'
+[-ELuSuY%=-F$6#/F+\"5Yg'oLuSuY%=" }}}{EXCHG {PARA 0 "" 0 "" {TEXT 218 
+6 "Assign" }}{PARA 0 "> " 0 "" {MPLTEXT 1 0 16 "unassign('K'): \n" }
 {MPLTEXT 1 0 17 "Q:=20: pitch:=1: " }{MPLTEXT 1 0 24 "N_pitch:=8/4: Ne
 C:=11/10" }{MPLTEXT 1 0 9 ": NoC:=1/" }{MPLTEXT 1 0 3 "NeC" }{MPLTEXT 
 1 0 2 ": " }{MPLTEXT 1 0 26 "phi_L := 0: phi_R := 2*Pi*" }{MPLTEXT 1 
 0 7 "N_pitch" }{MPLTEXT 1 0 1 ":" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 
 22 "N0:=1: Ld:=1/4: FeD:= " }{MPLTEXT 1 0 22 "exp(I*2*Pi*K*Ld/2*N0):" 
-}}{PARA 0 "" 0 "" {TEXT 217 5 "Build" }}{PARA 0 "> " 0 "" {MPLTEXT 1 
+}}{PARA 0 "" 0 "" {TEXT 218 5 "Build" }}{PARA 0 "> " 0 "" {MPLTEXT 1 
 0 58 "T1f:=evalf(simplify(T1,\{delta=2*Pi/Q,Fe=exp(I*2*Pi*K*pitch" }
 {MPLTEXT 1 0 2 "/2" }{MPLTEXT 1 0 29 "/Q*NeC),Fo=exp(I*2*Pi*K*pitch" }
 {MPLTEXT 1 0 2 "/2" }{MPLTEXT 1 0 26 "/Q*NoC),Ne=NeC,No=NoC\})):\n" }
@@ -158,7 +159,7 @@ No=N0\})):\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 32 "RmL:=simplify(R1m
 =NoC\}" }{MPLTEXT 1 0 3 "): " }{MPLTEXT 1 0 5 "DiC:=" }{MPLTEXT 1 0 
 30 "simplify(Di,\{Ne=NeC,No=NoC\}):\n" }{MPLTEXT 1 0 1 "\n" }{MPLTEXT 
 1 0 61 "TL:=simplify(Di,\{Ne=N0,No=N0\}): TR:=simplify(Dm,\{Ne=N0,No=N
-0\}" }{MPLTEXT 1 0 2 "):" }}}{EXCHG {PARA 0 "" 0 "" {TEXT 217 4 "Calc"
+0\}" }{MPLTEXT 1 0 2 "):" }}}{EXCHG {PARA 0 "" 0 "" {TEXT 218 4 "Calc"
  }}{PARA 0 "> " 0 "" {MPLTEXT 1 0 25 "KR:=[0.97, 1.03]: NK:=50:" }
 {MPLTEXT 1 0 1 "\n" }{MPLTEXT 1 0 16 "for i from 0 to " }{MPLTEXT 1 0 
 2 "NK" }{MPLTEXT 1 0 4 " do\n" }{MPLTEXT 1 0 6 " K := " }{MPLTEXT 1 0 
@@ -217,82 +218,61 @@ holderGQ&false6\"/%6selection-placeholderGQ&false6\"/%,mathvariantGQ'i
 talic6\"Q!6\"-%%FONTG6%%(DEFAULTG%(DEFAULTG\"#5%+HORIZONTALG%+HORIZONT
 ALG-%'SYMBOLG6$%$BOXG\"#7-%&STYLEG6#%&POINTG" 1 5 3 1 12 1 2 6 0 4 2 
 1.0 45.0 45.0 0 0 "Curve 1" }}{TEXT 226 0 "" }}}{EXCHG {PARA 0 "> " 0 
-"" {XPPEDIT 19 1 "Typesetting:-mrow(Typesetting:-mo(\"#\", mathvariant
- = \"normal\", fence = \"false\", separator = \"false\", stretchy = \"
-false\", symmetric = \"false\", largeop = \"false\", movablelimits = \+
-\"false\", accent = \"false\", lspace = \"0.0em\", rspace = \"0.0em\")
-, Typesetting:-mi(\"q2\21124q:\", italic = \"true\", mathvariant = \"i
-talic\"));" "-I%mrowG6#/I+modulenameG6\"I,TypesettingGI(_syslibGF'6$-I
-#moGF$6-Q\"#F'/%,mathvariantGQ'normalF'/%&fenceGQ&falseF'/%*separatorG
-F4/%)stretchyGF4/%*symmetricGF4/%(largeopGF4/%.movablelimitsGF4/%'acce
-ntGF4/%'lspaceGQ&0.0emF'/%'rspaceGFC-I#miGF$6%Q-q2&Assign;q:F'/%'itali
-cGQ%trueF'/F0Q'italicF'" }}}{EXCHG {PARA 0 "> " 0 "" {XPPEDIT 19 1 "pl
-ot(\{q, q2\}, k = KR[1] .. KR[2], style = point, symbol = box, symbols
-ize = 12);" "-I%mrowG6#/I+modulenameG6\"I,TypesettingGI(_syslibGF'6&-I
-#miGF$6%Q%plotF'/%'italicGQ%trueF'/%,mathvariantGQ'italicF'-I(mfencedG
-F$6$-F#67-F66&-F#6%-F,6%Q\"qF'F/F2-I#moGF$6-Q\",F'/F3Q'normalF'/%&fenc
-eGQ&falseF'/%*separatorGF1/%)stretchyGFI/%*symmetricGFI/%(largeopGFI/%
-.movablelimitsGFI/%'accentGFI/%'lspaceGQ&0.0emF'/%'rspaceGQ,0.3333333e
-mF'-F,6%Q#q2F'F/F2FE/%%openGQ\"|frF'/%&closeGQ\"|hrF'FA-F,6%Q\"kF'F/F2
--FB6-Q\"=F'FEFG/FKFIFLFNFPFRFT/FWQ,0.2777778emF'/FZFgo-F,6%Q#KRF'F/F2-
-F66&-F#6#-I#mnGF$6$Q\"1F'FEFE/FjnQ\"[F'/F]oQ\"]F'-FB6-Q#..F'FEFGFeoFLF
-NFPFRFT/FWQ,0.2222222emF'/FZFXFio-F66&-F#6#-Fap6$Q\"2F'FEFEFdpFfpFA-F,
-6%Q&styleF'F/F2Fbo-F,6%Q&pointF'F/F2FA-F,6%Q'symbolF'F/F2Fbo-F,6%Q$box
-F'F/F2FA-F,6%Q+symbolsizeF'F/F2Fbo-Fap6$Q#12F'FEFE-FB6-Q\";F'FEFGFJFLF
-NFPFRFTFVFho-F,6#Q!F'" }}{PARA 13 "" 1 "" {TEXT 226 0 "" }{GLPLOT2D 
-400 400 400 {PLOTDATA 2 "6(-%'CURVESG6$7U7$$\"#(*!\"#$\"+8O$><$!#67$$
-\"1,+++++7(*!#;$\"+cXu4L!#67$$\"%C(*!\"%$\"+OZ&GY$!#67$$\"%O(*!\"%$\"+
-<cFLO!#67$$\"%[(*!\"%$\"+-COBQ!#67$$\"$w*!\"$$\"+n>)e.%!#67$$\"%s(*!\"
-%$\"*4(4uU!#57$$\"%%y*!\"%$\"+`r'=a%!#67$$\"%'z*!\"%$\"+3]xV[!#67$$\"%
-3)*!\"%$\"+s$y_=&!#67$$\"$#)*!\"$$\"+Lg*Gd&!#67$$\"%K)*!\"%$\"2/+++jLW
-,'!#=7$$\"1***********R%)*!#;$\"+p.D>l!#67$$\"%c)*!\"%$\"+aEd)4(!#67$$
-\"%o)*!\"%$\"+aY%ew(!#67$$\"$))*!\"$$\"1******Hj4P&)!#<7$$\"%#*)*!\"%$
-\"1*****f*eFJ%*!#<7$$\"%/**!\"%$\"+pL/Z5!#57$$\"%;**!\"%$\"+Zg&z;\"!#5
-7$$\"%G**!\"%$\"+i!o&38!#57$$\"$%**!\"$$\"+%4e:Z\"!#57$$\"%_**!\"%$\"+
-mS6f;!#57$$\"%k**!\"%$\"*C)3s=!\"*7$$\"%w**!\"%$\"+Xui3@!#57$$\"%))**!
-\"%$\"+B#RAO#!#57$$\"#5!\"\"$\"+4&>'>E!#57$$\"&7+\"!\"%$\"+4!y#fG!#57$
-$\"&C+\"!\"%$\"+h&>G0$!#57$$\"&O+\"!\"%$\"+HHhqJ!#57$$\"&[+\"!\"%$\"+/
-GA\">$!#57$$\"%15!\"$$\"+$*445J!#57$$\"&s+\"!\"%$\"+eljTH!#57$$\"&%35!
-\"%$\"+o\"pJr#!#57$$\"&'45!\"%$\"+lo)\\X#!#57$$\"&3,\"!\"%$\"*o!\\#>#!
-\"*7$$\"%75!\"$$\"+N())G%>!#57$$\"&K,\"!\"%$\"*r'e:<!\"*7$$\"&W,\"!\"%
-$\"+'4>U^\"!#57$$\"&c,\"!\"%$\"+Pr#)Q8!#57$$\"&o,\"!\"%$\"+WFa(=\"!#57
-$$\"%=5!\"$$\"+%4'od5!#57$$\"&#>5!\"%$\"+k`)RY*!#67$$\"&/-\"!\"%$\"1,+
-+!4x'4&)!#<7$$\"&;-\"!\"%$\"+*=*o*o(!#67$$\"&G-\"!\"%$\"+`x0$)p!#67$$
-\"%C5!\"$$\"+p[+sj!#67$$\"&_-\"!\"%$\"2&*****zG>;%e!#=7$$\"&k-\"!\"%$
-\"+)>o%z`!#67$$\"&w-\"!\"%$\"+A+@v\\!#67$$\"&)G5!\"%$\"+^hC?Y!#67$$\"$
-.\"!\"#$\"+r!=uI%!#6-%&COLORG6&%$RGBG$\"#5!\"\"$\"\"!!\"\"$\"\"!!\"\"-
-%'CURVESG6$7U7$$\"#(*!\"#$\"+cQz)>$!#67$$\"1,+++++7(*!#;$\"+Q&*ePL!#67
-$$\"%C(*!\"%$\"+t@w\"\\$!#67$$\"%O(*!\"%$\"+b9LjO!#67$$\"%[(*!\"%$\"+B
->maQ!#67$$\"$w*!\"$$\"+E5`oS!#67$$\"%s(*!\"%$\"+tN@3V!#67$$\"%%y*!\"%$
-\"+4EexX!#67$$\"%'z*!\"%$\"+'\\O7)[!#67$$\"%3)*!\"%$\"*d]YA&!#57$$\"$#
-)*!\"$$\"+BNO9c!#67$$\"%K)*!\"%$\"21++!*R.#eg!#=7$$\"1***********R%)*!
-#;$\"+'Rabc'!#67$$\"%c)*!\"%$\"+#Qqw9(!#67$$\"%o)*!\"%$\"+*3D!=y!#67$$
-\"$))*!\"$$\"+B!zEf)!#67$$\"%#*)*!\"%$\"'h!\\*!\"(7$$\"%/**!\"%$\"+=$*
-Q`5!#57$$\"%;**!\"%$\"*J`Z<\"!\"*7$$\"%G**!\"%$\"+HY&eJ\"!#57$$\"$%**!
-\"$$\"*Ln$z9!\"*7$$\"%_**!\"%$\"+x$oum\"!#57$$\"%k**!\"%$\"+U#*)4)=!#5
-7$$\"%w**!\"%$\"+w=/=@!#57$$\"%))**!\"%$\"+'*33sB!#57$$\"#5!\"\"$\"+&H
-I(HE!#57$$\"&7+\"!\"%$\"*J:%pG!\"*7$$\"&C+\"!\"%$\"+9@miI!#57$$\"&O+\"
-!\"%$\"+9ezzJ!#57$$\"&[+\"!\"%$\"+)H+%*>$!#57$$\"%15!\"$$\"+:h+<J!#57$
-$\"&s+\"!\"%$\"+#4mr%H!#57$$\"&%35!\"%$\"+3fK<F!#57$$\"&'45!\"%$\"+jj)
-yX#!#57$$\"&3,\"!\"%$\"+`[I%>#!#57$$\"%75!\"$$\"+)f0Q%>!#57$$\"&K,\"!
-\"%$\"+UUy:<!#57$$\"&W,\"!\"%$\"+BC&Q^\"!#57$$\"&c,\"!\"%$\"+4[-Q8!#57
-$$\"&o,\"!\"%$\"+%*zS'=\"!#57$$\"%=5!\"$$\"+F-Ic5!#57$$\"&#>5!\"%$\"1*
-****\\Q[#[%*!#<7$$\"&/-\"!\"%$\"*.^D\\)!#57$$\"&;-\"!\"%$\"+'y]:n(!#67
-$$\"&G-\"!\"%$\"+Al>kp!#67$$\"%C5!\"$$\"+KIk_j!#67$$\"&_-\"!\"%$\"+Gs#
->#e!#67$$\"&k-\"!\"%$\"+'Qw&f`!#67$$\"&w-\"!\"%$\"+-\"=_&\\!#67$$\"&)G
-5!\"%$\"+d*H-g%!#67$$\"$.\"!\"#$\"+i\\V(G%!#6-%&COLORG6&%$RGBG$\"2'\\_
-'eM%yg>!#<$\"1ij9.e@R!)!#;$\"2'\\_'eM%yg>!#<-%%VIEWG6$;$\"#(*!\"#$\"$.
-\"!\"#%(DEFAULTG-%+AXESLABELSG6'-I#miG6#/I+modulenameG6\"I,Typesetting
-GI(_syslibG6\"65Q\"k6\"/%'familyGQ!6\"/%%sizeGQ#106\"/%%boldGQ&false6
-\"/%'italicGQ%true6\"/%*underlineGQ&false6\"/%*subscriptGQ&false6\"/%,
-superscriptGQ&false6\"/%+foregroundGQ([0,0,0]6\"/%+backgroundGQ.[255,2
-55,255]6\"/%'opaqueGQ&false6\"/%+executableGQ&false6\"/%)readonlyGQ&fa
-lse6\"/%)composedGQ&false6\"/%*convertedGQ&false6\"/%+imselectedGQ&fal
-se6\"/%,placeholderGQ&false6\"/%6selection-placeholderGQ&false6\"/%,ma
-thvariantGQ'italic6\"Q!6\"-%%FONTG6%%(DEFAULTG%(DEFAULTG\"#5%+HORIZONT
-ALG%+HORIZONTALG-%'SYMBOLG6$%$BOXG\"#7-%&STYLEG6#%&POINTG" 1 5 3 1 12 
-1 2 6 0 4 2 1.0 45.0 45.0 0 0 "Curve 1" "Curve 2" }}{TEXT 226 0 "" }}}
-{EXCHG {PARA 13 "" 1 "" {TEXT 226 0 "" }}}{EXCHG {PARA 0 "> " 0 "" 
-{XPPEDIT 19 1 "" "%#%?G" }}}}
+"" {XPPEDIT 19 1 "" "-I%mrowG6#/I+modulenameG6\"I,TypesettingGI(_sysli
+bGF'6$-I#moGF$6-Q\"#F'/%,mathvariantGQ'normalF'/%&fenceGQ&falseF'/%*se
+paratorGF4/%)stretchyGF4/%*symmetricGF4/%(largeopGF4/%.movablelimitsGF
+4/%'accentGF4/%'lspaceGQ&0.0emF'/%'rspaceGFC-I#miGF$6%Q-q2&Assign;q:F'
+/%'italicGQ%trueF'/F0Q'italicF'" }}}{EXCHG {PARA 0 "> " 0 "" {XPPEDIT 
+19 1 "plot(\{q, q2\}, k = KR[1] .. KR[2], style = point, symbol = box,
+ symbolsize = 12);" "-I%mrowG6#/I+modulenameG6\"I,TypesettingGI(_sysli
+bGF'6&-I#miGF$6%Q%plotF'/%'italicGQ%trueF'/%,mathvariantGQ'italicF'-I(
+mfencedGF$6$-F#67-F66&-F#6%-F,6%Q\"qF'F/F2-I#moGF$6-Q\",F'/F3Q'normalF
+'/%&fenceGQ&falseF'/%*separatorGF1/%)stretchyGFI/%*symmetricGFI/%(larg
+eopGFI/%.movablelimitsGFI/%'accentGFI/%'lspaceGQ&0.0emF'/%'rspaceGQ,0.
+3333333emF'-F,6%Q#q2F'F/F2FE/%%openGQ\"|frF'/%&closeGQ\"|hrF'FA-F,6%Q
+\"kF'F/F2-FB6-Q\"=F'FEFG/FKFIFLFNFPFRFT/FWQ,0.2777778emF'/FZFgo-F,6%Q#
+KRF'F/F2-F66&-F#6#-I#mnGF$6$Q\"1F'FEFE/FjnQ\"[F'/F]oQ\"]F'-FB6-Q#..F'F
+EFGFeoFLFNFPFRFT/FWQ,0.2222222emF'/FZFXFio-F66&-F#6#-Fap6$Q\"2F'FEFEFd
+pFfpFA-F,6%Q&styleF'F/F2Fbo-F,6%Q&pointF'F/F2FA-F,6%Q'symbolF'F/F2Fbo-
+F,6%Q$boxF'F/F2FA-F,6%Q+symbolsizeF'F/F2Fbo-Fap6$Q#12F'FEFE-FB6-Q\";F'
+FEFGFJFLFNFPFRFTFVFho-F,6#Q!F'" }}{PARA 7 "" 1 "" {TEXT 227 160 "Warni
+ng, unable to evaluate 1 of the 2 functions to numeric values in the r
+egion; see the plotting command's help page to ensure the calling sequ
+ence is correct" }}{PARA 13 "" 1 "" {TEXT 226 0 "" }{GLPLOT2D 400 400 
+400 {PLOTDATA 2 "6'-%'CURVESG6$7U7$$\"#(*!\"#$\"+8O$><$!#67$$\"1,+++++
+7(*!#;$\"+cXu4L!#67$$\"%C(*!\"%$\"+OZ&GY$!#67$$\"%O(*!\"%$\"+<cFLO!#67
+$$\"%[(*!\"%$\"+-COBQ!#67$$\"$w*!\"$$\"+n>)e.%!#67$$\"%s(*!\"%$\"*4(4u
+U!#57$$\"%%y*!\"%$\"+`r'=a%!#67$$\"%'z*!\"%$\"+3]xV[!#67$$\"%3)*!\"%$
+\"+s$y_=&!#67$$\"$#)*!\"$$\"+Lg*Gd&!#67$$\"%K)*!\"%$\"2/+++jLW,'!#=7$$
+\"1***********R%)*!#;$\"+p.D>l!#67$$\"%c)*!\"%$\"+aEd)4(!#67$$\"%o)*!
+\"%$\"+aY%ew(!#67$$\"$))*!\"$$\"1******Hj4P&)!#<7$$\"%#*)*!\"%$\"1****
+*f*eFJ%*!#<7$$\"%/**!\"%$\"+pL/Z5!#57$$\"%;**!\"%$\"+Zg&z;\"!#57$$\"%G
+**!\"%$\"+i!o&38!#57$$\"$%**!\"$$\"+%4e:Z\"!#57$$\"%_**!\"%$\"+mS6f;!#
+57$$\"%k**!\"%$\"*C)3s=!\"*7$$\"%w**!\"%$\"+Xui3@!#57$$\"%))**!\"%$\"+
+B#RAO#!#57$$\"#5!\"\"$\"+4&>'>E!#57$$\"&7+\"!\"%$\"+4!y#fG!#57$$\"&C+
+\"!\"%$\"+h&>G0$!#57$$\"&O+\"!\"%$\"+HHhqJ!#57$$\"&[+\"!\"%$\"+/GA\">$
+!#57$$\"%15!\"$$\"+$*445J!#57$$\"&s+\"!\"%$\"+eljTH!#57$$\"&%35!\"%$\"
++o\"pJr#!#57$$\"&'45!\"%$\"+lo)\\X#!#57$$\"&3,\"!\"%$\"*o!\\#>#!\"*7$$
+\"%75!\"$$\"+N())G%>!#57$$\"&K,\"!\"%$\"*r'e:<!\"*7$$\"&W,\"!\"%$\"+'4
+>U^\"!#57$$\"&c,\"!\"%$\"+Pr#)Q8!#57$$\"&o,\"!\"%$\"+WFa(=\"!#57$$\"%=
+5!\"$$\"+%4'od5!#57$$\"&#>5!\"%$\"+k`)RY*!#67$$\"&/-\"!\"%$\"1,++!4x'4
+&)!#<7$$\"&;-\"!\"%$\"+*=*o*o(!#67$$\"&G-\"!\"%$\"+`x0$)p!#67$$\"%C5!
+\"$$\"+p[+sj!#67$$\"&_-\"!\"%$\"2&*****zG>;%e!#=7$$\"&k-\"!\"%$\"+)>o%
+z`!#67$$\"&w-\"!\"%$\"+A+@v\\!#67$$\"&)G5!\"%$\"+^hC?Y!#67$$\"$.\"!\"#
+$\"+r!=uI%!#6-%&COLORG6&%$RGBG$\"#5!\"\"$\"\"!!\"\"$\"\"!!\"\"-%%VIEWG
+6$;$\"#(*!\"#$\"$.\"!\"#%(DEFAULTG-%+AXESLABELSG6'-I#miG6#/I+modulenam
+eG6\"I,TypesettingGI(_syslibG6\"65Q\"k6\"/%'familyGQ!6\"/%%sizeGQ#106
+\"/%%boldGQ&false6\"/%'italicGQ%true6\"/%*underlineGQ&false6\"/%*subsc
+riptGQ&false6\"/%,superscriptGQ&false6\"/%+foregroundGQ([0,0,0]6\"/%+b
+ackgroundGQ.[255,255,255]6\"/%'opaqueGQ&false6\"/%+executableGQ&false6
+\"/%)readonlyGQ&false6\"/%)composedGQ&false6\"/%*convertedGQ&false6\"/
+%+imselectedGQ&false6\"/%,placeholderGQ&false6\"/%6selection-placehold
+erGQ&false6\"/%,mathvariantGQ'italic6\"Q!6\"-%%FONTG6%%(DEFAULTG%(DEFA
+ULTG\"#5%+HORIZONTALG%+HORIZONTALG-%'SYMBOLG6$%$BOXG\"#7-%&STYLEG6#%&P
+OINTG" 1 5 3 1 12 1 2 6 0 4 2 1.0 45.0 45.0 0 0 "Curve 1" }}{TEXT 226 
+0 "" }}}{EXCHG {PARA 13 "" 1 "" {TEXT 226 0 "" }}}{EXCHG {PARA 0 "> " 
+0 "" {XPPEDIT 19 1 "Typesetting:-mi(\"?\", italic = \"true\", mathvari
+ant = \"italic\");" "-I#miG6#/I+modulenameG6\"I,TypesettingGI(_syslibG
+F'6%Q\"?F'/%'italicGQ%trueF'/%,mathvariantGQ'italicF'" }}}}
 {MARK "0 0 0" 0 }{VIEWOPTS 1 1 0 1 1 1803 1 1 1 1 }{PAGENUMBERS 0 1 2
  33 1 1 }

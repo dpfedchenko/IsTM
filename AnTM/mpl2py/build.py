@@ -7,8 +7,8 @@ from assign import Pi, I
 # Functions
 def F(K, Q, N, pitch):
     return exp(I * 2 * Pi * K * pitch/2/Q * N)
-def FeD(K, Ld, N0):
-    return exp(I * 2 * Pi * K * Ld/2 * N0)
+def FeD(K, Ld, Nd):
+    return exp(I * 2 * Pi * K * Ld/2 * Nd)
 
 # Matrix
 def Pr(K, Q, Ne, No, pitch):
@@ -40,12 +40,12 @@ def _calculate_T_matrix(delta, Fo, Fe, No, Ne):
       [.5 * (Fe * S * (-No + Ne)) / (Ne * Fo), .5 * (Fo * Fe * S * (No + Ne)) / Ne, 0, Fe**2 * C]
     ])
 
-def T1(delta, K, Q, Ne, No, pitch):
+def T(delta, K, Q, Ne, No, pitch):
     Fo = F(K, Q, No, pitch)
     Fe = F(K, Q, Ne, pitch)
     return _calculate_T_matrix(delta, Fo, Fe, No, Ne)
 
-def T2(delta, K, Ld, N0):
-    Fo = FeD(K, Ld, N0)
+def Td(delta, K, Ld, Nd):
+    Fo = FeD(K, Ld, Nd)
     Fe = Fo
-    return _calculate_T_matrix(delta, Fo, Fe, N0, N0)
+    return _calculate_T_matrix(delta, Fo, Fe, Nd, Nd)

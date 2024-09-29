@@ -1,20 +1,17 @@
 import matplotlib.pyplot as plt
-from calc import calculate_TO, calculate_OT, calculate_TE, Omega
+from calc import calculate_TO, calculate_OT
+from calc_sym import calculate_TO_sym, calculate_OT_sym
+from assign import Pi, KR, lmbd
+from Berreman import tBSp, BSp
+import numpy as np
 
-TOa = calculate_TO()
-OTa = calculate_OT()
-UTEa = calculate_TE()
+TOspec = calculate_TO_sym()
+OTspec = calculate_OT_sym()
 
-#plt.scatter(Omega, TOa, s = 15)
-#plt.scatter(Omega, OTa, s = 2)
+plt.plot(lmbd, TOspec, linewidth = 6, label = 'ATM TO')
+plt.plot(lmbd, OTspec, label = 'ATM OT')
 
-fig = plt.figure()
-ax = fig.add_subplot(projection='3d')
+plt.plot(tBSp, BSp, c = 'm', label = 'Berreman')
 
-for i in range(len(Omega) - 1):
-    tx = UTEa[i][0]
-    ty = UTEa[i][1]
-    #ax.scatter(UTEa[i][0].real, Omega[i], UTEa[i][1].real, s = 2, c = 'r')
-    #ax.scatter(UTEa[i][0].imag, Omega[i], UTEa[i][1].imag, s = 2, c = 'b')
-    ax.scatter(tx.imag, Omega[i], ty.imag, s = 2, c = 'b')
+plt.legend()
 plt.show()

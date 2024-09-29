@@ -1,22 +1,20 @@
+import numpy as np
 from numpy import pi  
 
 Pi, I = pi, 1j
 
-NK = 100
-KR = [0, 7]
+NK = 1000
 
-Q = 25
+KR = [1/.8, 1/.56]
+t = np.arange(1, NK + 1, 1)
+lmbd = 1000 / (KR[0] + (KR[1] - KR[0]) * t / NK)
 
-pitch = 2
-N_pitch = 7
 
-Ne = 10.6/10
-No = 1/Ne
+pitch = .4533
 
-N0 = 1
-Ld = 1
+Ne = 1.57
+No = 1.42
+N0 = (Ne + No) / 2
 
-phi_L = 0
-phi_R = 2 * pi * N_pitch
-
-degTCLC = [1, 1]
+Nd = 1.42 + .0075j
+Ld = .1197

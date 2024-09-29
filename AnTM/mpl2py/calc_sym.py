@@ -1,12 +1,11 @@
-from assign import Pi, pitch, Ne, No, Ld, Nd, N0, NK, KR
+from assign import Pi, pitch, Ne, No, Ld, Nd, N0, lmbd, KR
 from build import Dm, Di, R1m, R2i, T, Td
-from CLC1 import L1, Q1, Q_N_pitch1, N_pitch1, phi_L1, phi_R1
-from CLC2 import L2, Q2, Q_N_pitch2, N_pitch2, phi_L2, phi_R2
+from CLC1 import L1, Q1, N_pitch1, phi_L1, phi_R1
+from CLC2 import L2, Q2, N_pitch2, phi_L2, phi_R2
 import numpy as np
 
-# Calculate wave vector range
-kh = (KR[1] - KR[0]) / NK
-Omega = np.linspace(KR[0], KR[1], NK)
+NK = len(lmbd)
+kh = 1 / NK
 
 # Precalculate matrices
 # CLC1
@@ -23,10 +22,6 @@ DmC = Dm(No, Ne)
 TL  = Di(N0, N0)
 TR  = Dm(N0, N0)
 
-# Initialize output arrays
-U1 = np.zeros(NK)
-U2 = np.zeros(NK)
-
 # Function to calculate transmittance coefficient
 def calculate_transmittance(TT):
   Vector = np.array([1 / np.sqrt(2), 0, -1j / np.sqrt(2), 0])
@@ -35,7 +30,8 @@ def calculate_transmittance(TT):
   return [tx.tolist(), ty.tolist()] #abs(tx)**2 + abs(ty)**2
 
 # Function to calculate transmittance coefficient for TO
-def calculate_TO():
+def calculate_TO_sym():
+  U1 = np.zeros(NK)
   for i in range(NK):
     K = KR[0] + i * kh
     
@@ -53,7 +49,8 @@ def calculate_TO():
   return U1
 
 # Function to calculate transmittance coefficient for OT
-def calculate_OT():
+def calculate_OT_sym():
+  U1 = np.zeros(NK)
   for i in range(NK):
     K = KR[0] + i * kh
     

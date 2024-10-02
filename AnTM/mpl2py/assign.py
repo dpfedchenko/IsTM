@@ -1,4 +1,5 @@
 from numpy import arange
+
 NK = 1000
 KR = [1/.8, 1/.560]
 t = arange(0, NK + 1, 1)

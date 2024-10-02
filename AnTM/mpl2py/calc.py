@@ -21,26 +21,22 @@ TL  = Dm(N0, N0)**-1
 TR  = Dm(N0, N0)
 
 def calculate_transmittance(TT):
-  Vector = np.array([1 / np.sqrt(2), 0, -1j / np.sqrt(2), 0])
-  tx = (+ TT[2, 2] * Vector[0] - TT[0, 2] * Vector[2]) / (- TT[2, 0] * TT[0, 2] + TT[2, 2] * TT[0, 0])
+  Vector = np.array([1 / 2**0.5, 0, -1j / 2**0.5, 0])
+  tx =   (+ TT[2, 2] * Vector[0] - TT[0, 2] * Vector[2]) / (- TT[2, 0] * TT[0, 2] + TT[2, 2] * TT[0, 0])
   ty = - (- TT[0, 0] * Vector[2] + TT[2, 0] * Vector[0]) / (- TT[2, 0] * TT[0, 2] + TT[2, 2] * TT[0, 0])
-  return [tx.tolist(), ty.tolist()] #abs(tx)**2 + abs(ty)**2
+  return [tx, ty]
 
 def calculate_TO():
   UTO = np.zeros(NK)
   for i in range(NK):
     K = KR[0] + i * kh
-    
     T1f = T(2 * np.pi / Q1, K, Q1, Ne, No, pitch)
     T2f = T(2 * np.pi / Q2, K, Q2, Ne, No, pitch)
     Tdf = Td(0, K, Ld, Nd)
-    
     TCLC1 = RmL1 @ DmC @ T1f**int(Q1 * N_pitch1) @ DiC @ RiR1
     TCLC2 = RmL2 @ DmC @ T2f**int(Q2 * N_pitch2) @ DiC @ RiR2
     TDef  = RmL1 @ DmC @ Tdf @ DiC @ RiR2
-    
     TT = TL @ TCLC1 @ TDef @ TCLC2 @ TR
-    
     UTO[i] = abs(calculate_transmittance(TT)[0])**2 + abs(calculate_transmittance(TT)[1])**2
   return UTO
 
@@ -48,16 +44,12 @@ def calculate_OT():
   UOT = np.zeros(NK)
   for i in range(NK):
     K = KR[0] + i * kh
-    
     T1f = T(2 * np.pi / Q1, K, Q1, Ne, No, pitch)
     T2f = T(2 * np.pi / Q2, K, Q2, Ne, No, pitch)
     Tdf = Td(0, K, Ld, Nd)
-    
     TCLC1 = RmL1 @ DmC @ T1f**int(Q1 * N_pitch1) @ DiC @ RiR1
     TCLC2 = RmL2 @ DmC @ T2f**int(Q2 * N_pitch2) @ DiC @ RiR2
     TDef  = RmL1 @ DmC @ Tdf @ DiC @ RiR2
-    
     TT = TL @ TCLC2 @ TDef @ TCLC1 @ TR
-    
     UOT[i] = abs(calculate_transmittance(TT)[0])**2 + abs(calculate_transmittance(TT)[1])**2
   return UOT

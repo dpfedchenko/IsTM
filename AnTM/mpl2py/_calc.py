@@ -36,13 +36,7 @@ def calculate_TO():
     TCLC1 = RmL1 @ DmC @ T1f**int(Q1 * N_pitch1) @ DiC @ RiR1
     TCLC2 = RmL2 @ DmC @ T2f**int(Q2 * N_pitch2) @ DiC @ RiR2
     TDef  = RmL1 @ DmC @ Tdf @ DiC @ RiR2
-    #
-    LR_sub = (Ne *  No)**0.5
-    TL = Dm(LR_sub, LR_sub)**-1
-    TR = Dm(LR_sub, LR_sub)
-    #
     TT = TL @ TCLC1 @ TDef @ TCLC2 @ TR
-    
     UTO[i] = abs(calculate_transmittance(TT)[0])**2 + abs(calculate_transmittance(TT)[1])**2
   return UTO
 
@@ -56,11 +50,6 @@ def calculate_OT():
     TCLC1 = RmL1 @ DmC @ T1f**int(Q1 * N_pitch1) @ DiC @ RiR1
     TCLC2 = RmL2 @ DmC @ T2f**int(Q2 * N_pitch2) @ DiC @ RiR2
     TDef  = RmL1 @ DmC @ Tdf @ DiC @ RiR2
-    #
-    LR_sub = (Ne *  No)**0.5
-    TL = Dm(LR_sub, LR_sub)
-    TR = Dm(LR_sub, LR_sub)**-1
-    #
     TT = TL @ TCLC2 @ TDef @ TCLC1 @ TR
     UOT[i] = abs(calculate_transmittance(TT)[0])**2 + abs(calculate_transmittance(TT)[1])**2
   return UOT

@@ -1,52 +1,14 @@
-# Python libraries
-import numpy as np
 import math
+from numpy import array, repeat
 
-# TM modules
-import IsTM_matrix as ITMm
+def build_ng(SL, Nsub):
+  ng = array([val for val, _ in SL])
+  ng = repeat(ng, Nsub)
+  return ng
 
-def printE (E):
-    for i in range(len(E)):
-        print(str("{:.2f}".format(E[i][0])) + ", " + str("{:.2f}".format(E[i][1])))
-
-def print2M (M):
-    print(str("{:.2f}".format(M[0][0])) + " | " + str("{:.2f}".format(M[0][1])))
-    print(str("{:.2f}".format(M[1][0])) + " | " + str("{:.2f}".format(M[1][1])))
-
-# TMB_go
-def goTM(SL, Nsub, Out, Kg):
-    ng, zg = [], [0]
-    Nl = len(SL)
-    for i in range(Nl):
-        ng += (SL[i][0] * np.ones(Nsub)).tolist()
-    for i in range(Nl):
-        for j in range(Nsub):
-            zg.append(zg[-1] + SL[i][1] * math.ceil(j/Nsub)/(Nsub - 1))
-    zg = zg[1:len(zg)]
-    dzg = np.diff(np.array(zg))
-    Tg, E = [], []
-    # TMC
-    for k in Kg:
-        for i in range(len(zg)):
-            E.append([0, 0])
-        E[-1] = Out
-        for j in range(len(zg) - 2, -1, -1):
-            if (dzg[j] != 0):
-                E[j] = ITMm.iPr(k, ng[j], dzg[j], E[j + 1])
-            else:
-                E[j] = (ITMm.iD(ng[j]) @\
-                        ITMm.D(ng[j + 1]) @\
-                        np.array(E[j + 1])).tolist()
-                print2M(ITMm.iD(ng[j]))
-                print('\n')
-        if len(Kg) == 1:
-            rAg, rBg, aAg, aBg, pAg, pBg = [], [], [], [], [], []
-            for i in range(len(E)):
-                rAg.append(E[i][0].real)
-                rBg.append(E[i][1].real) 
-                aAg.append(abs(E[i][0]))
-                aBg.append(abs(E[i][1]))
-        else:
-            Tg.append(abs(E[-1][0]/E[0][0])**2)
-    
-    return [zg, E, Tg]
+def build_zg(SL, Nsub):
+  zg = [0]
+  for i in range(len(SL)):
+    for j in range(Nsub):
+      zg.append(zg[-1] + SL[i][1] * math.ceil(j / Nsub) / (Nsub - 1))
+  return zg[1:]

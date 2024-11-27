@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from assign import KR 
-from calc import lmbd
+from assign import LR_CLC1, LR_CLC2
+from build import lmbd
 from Berreman import B32_WL, B32_R, B32_T, B32_A
 from Berreman import B23_WL, B23_R, B23_T, B23_A
 
@@ -13,12 +13,12 @@ def T_spectrum_plot(T, A, R):
     plt.plot(lmbd[::-1], A[::-1], linewidth = 5, c = '#64AAD0', label = 'ATM_A')
 
     # Berreman    
-    plt.plot(B32_WL, B32_T, c = '#005500', label = 'B_T')
-    plt.plot(B32_WL, B32_R, c = '#550000', label = 'B_R')
-    plt.plot(B32_WL, B32_A, c = '#000055', label = 'B_A')
+    #plt.plot(B32_WL, B32_T, c = '#005500', label = 'B_T')
+    #plt.plot(B32_WL, B32_R, c = '#550000', label = 'B_R')
+    #plt.plot(B32_WL, B32_A, c = '#000055', label = 'B_A')
     
     plt.ylim(0, 1)
-    plt.xlim(1000/KR[1], 1000/KR[0])
+    plt.xlim(640, 720)
     plt.ylabel('Spectral coefficients')
     plt.xlabel('Wavelength, nm')
     plt.legend(loc='upper left')

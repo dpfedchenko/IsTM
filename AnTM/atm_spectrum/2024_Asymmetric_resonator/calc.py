@@ -8,6 +8,10 @@ from build import delta_CLC2, RmL_CLC2, RiR_CLC2, Dm_CLC2, Di_CLC2
 from build import RmL_def, RiR_def, Dm_def, Di_def
 from build import TL, TR
 
+def clc_layer(lr_clc):
+    return 0
+
+
 def TA_spectrum_calc():
     T, A, R = [], [], []
     for i in range(NK + 1):
